@@ -7,8 +7,9 @@ https://link.nomadamas.org
 ## 구성
 
 - `index.html` 한 파일이 전부입니다. 빌드 단계 없이 GitHub Pages가 `main` 브랜치 루트를 그대로 배포합니다.
-- `CNAME`은 커스텀 도메인 설정이고, `.nojekyll`은 Jekyll 처리를 끄는 빈 파일입니다.
+- 커스텀 도메인은 Pages 설정에서 걸며, 걸면 GitHub이 `CNAME` 파일을 main에 커밋합니다. `.nojekyll`은 Jekyll 처리를 끄는 빈 파일입니다.
 - DNS는 Cloudflare에서 `link` CNAME을 `nomadamas.github.io`로 두고 프록시는 끕니다. blog.nomadamas.org와 같은 방식입니다.
+- 커스텀 도메인을 빼면 GitHub Pages가 조직 사이트 도메인 아래 `blog.nomadamas.org/link/`로 보여 줍니다.
 
 ## 링크 고치기
 
@@ -19,7 +20,8 @@ https://link.nomadamas.org
 ## 측정 (GA4)
 
 - 속성은 blog.nomadamas.org와 같은 `G-ZTXBV8QP9G`입니다. 보고서에서 호스트 이름 `link.nomadamas.org`로 거르면 됩니다.
-- 태그는 `link.nomadamas.org`에서 열렸을 때만 불러옵니다. 로컬에서 파일을 열어 보는 것은 집계되지 않습니다.
+- `blog.nomadamas.org/link/`로 열린 기록은 블로그와 호스트가 같아서, 페이지 경로 `/link/`로 거르면 됩니다.
+- 태그는 이 두 주소에서 열렸을 때만 불러옵니다. 로컬에서 파일을 열어 보는 것은 집계되지 않습니다.
 - 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, threads, x, instagram, youtube, tiktok, facebook)와 `link_url`로 볼 수 있습니다.
 
 ## 프로필에 거는 주소
