@@ -20,8 +20,7 @@ https://link.nomadamas.org
 ## 측정 (GA4)
 
 - 속성은 blog.nomadamas.org와 같은 `G-ZTXBV8QP9G`입니다. 보고서에서 호스트 이름 `link.nomadamas.org`로 거르면 됩니다.
-- `blog.nomadamas.org/link/`로 열린 기록은 블로그와 호스트가 같아서, 페이지 경로 `/link/`로 거르면 됩니다.
-- 태그는 이 두 주소에서 열렸을 때만 불러옵니다. 로컬에서 파일을 열어 보는 것은 집계되지 않습니다.
+- 태그는 `link.nomadamas.org`에서 열렸을 때만 불러옵니다. 임시 주소 `blog.nomadamas.org/link/`와 로컬 파일은 블로그 데이터와 섞이지 않게 집계하지 않습니다.
 - 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, threads, x, instagram, youtube, tiktok, facebook)와 `link_url`로 볼 수 있습니다.
 
 ## 프로필에 거는 주소
