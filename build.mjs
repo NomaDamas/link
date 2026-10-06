@@ -48,7 +48,8 @@ for (const l of langs) {
 				.filter((x) => x !== l)
 				.map((x) => `<meta property="og:locale:alternate" content="${cfg.pages[x].ogLocale}">`)
 				.join("\n"),
-			langNav: langs.map((x) => langLink(x, "../", x === l)).join("\n    "),
+			langCode: l.toUpperCase(),
+			langNav: langs.map((x) => langLink(x, "../", x === l)).join("\n      "),
 		},
 		`${l}/index.html`,
 	);

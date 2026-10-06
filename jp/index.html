@@ -145,13 +145,27 @@ a{color:inherit}
 .sub{margin:14px 0 0;font-size:.885rem;line-height:1.75;color:var(--dim)}
 
 /* ---------- languages ---------- */
-/* 첫 화면 위쪽 여백에 띄워 레이아웃 흐름에 끼지 않게 한다 */
-.langs{position:absolute;top:clamp(14px,3.2vh,30px);right:max(20px,env(safe-area-inset-right,0px));
-  display:flex;flex-wrap:wrap;justify-content:flex-end;gap:2px 14px;font-family:var(--f-mono);font-size:.74rem;line-height:1}
-.langs a{color:var(--dim);text-decoration:none;padding:6px 0 5px;border-bottom:1.5px solid transparent;
+/* 첫 화면 위쪽 여백에 띄운 작은 토글이다. 누르면 언어 목록이 펼쳐지고, details라 JS가 없어도 열린다 */
+.langs{position:absolute;z-index:5;top:clamp(14px,3.2vh,30px);right:max(20px,env(safe-area-inset-right,0px))}
+.langs summary{list-style:none;display:flex;align-items:center;gap:6px;height:32px;padding:0 10px;
+  border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--dim);cursor:pointer;
+  font-family:var(--f-mono);font-size:.74rem;line-height:1;-webkit-tap-highlight-color:transparent;
   transition:color .16s,border-color .16s}
-.langs a[aria-current="page"]{color:var(--text);border-bottom-color:var(--sand)}
-@media (hover:hover){.langs a:hover{color:var(--sand)}}
+.langs summary::-webkit-details-marker{display:none}
+.langs summary svg{width:14px;height:14px;flex:none;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+.langs summary .chev{width:10px;height:10px;transition:transform .2s var(--ease)}
+.langs[open] summary{color:var(--text);border-color:var(--sand)}
+.langs[open] summary .chev{transform:rotate(180deg)}
+@media (hover:hover){.langs summary:hover{color:var(--sand);border-color:var(--sand)}}
+.langs nav{position:absolute;right:0;top:calc(100% + 6px);min-width:9.5rem;display:grid;gap:2px;padding:6px;
+  border:1px solid var(--line);border-radius:12px;background:var(--surface);box-shadow:var(--shadow);
+  animation:pop .18s var(--ease)}
+.langs nav a{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 10px;border-radius:8px;
+  color:var(--dim);text-decoration:none;font-size:.86rem;line-height:1.2;transition:color .16s,background-color .16s}
+.langs nav a[aria-current="page"]{color:var(--text);font-weight:600}
+.langs nav a[aria-current="page"]::after{content:"";width:6px;height:6px;flex:none;border-radius:50%;background:var(--sand)}
+@media (hover:hover){.langs nav a:hover{color:var(--sand);background:var(--void)}}
 
 /* ---------- links ---------- */
 .links{list-style:none;margin:0;padding:0;display:grid;gap:10px}
@@ -201,6 +215,7 @@ a{color:inherit}
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes twinkle{0%,100%{opacity:1;transform:scale(1)}45%{opacity:.45;transform:scale(.82)}}
 @keyframes drift{to{transform:translateY(-40px)}}
+@keyframes pop{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
     transition-duration:.001ms!important}
@@ -216,12 +231,15 @@ a{color:inherit}
 <div class="grain" aria-hidden="true"></div>
 
 <div class="wrap">
-  <nav class="langs" aria-label="言語">
-    <a href="../ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a>
-    <a href="../en/" hreflang="en" lang="en" data-lang="en">English</a>
-    <a href="../cn/" hreflang="zh-Hans" lang="zh-Hans" data-lang="cn">中文</a>
-    <a href="../jp/" hreflang="ja" lang="ja" data-lang="jp" aria-current="page">日本語</a>
-  </nav>
+  <details class="langs">
+    <summary><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z"/></svg><span aria-hidden="true">JP</span><span class="vh">言語: 日本語</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></summary>
+    <nav aria-label="言語">
+      <a href="../ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a>
+      <a href="../en/" hreflang="en" lang="en" data-lang="en">English</a>
+      <a href="../cn/" hreflang="zh-Hans" lang="zh-Hans" data-lang="cn">中文</a>
+      <a href="../jp/" hreflang="ja" lang="ja" data-lang="jp" aria-current="page">日本語</a>
+    </nav>
+  </details>
   <header>
     <div class="mark rise" style="--i:0">
       <svg class="camel" viewBox="138 222 656 443" aria-hidden="true">
@@ -286,6 +304,14 @@ document.querySelectorAll(".langs a").forEach(function (a) {
   a.addEventListener("click", function () {
     try { localStorage.setItem("nd-lang", a.dataset.lang); } catch (e) {}
   });
+});
+// 언어 토글은 바깥을 누르거나 Esc를 누르면 닫는다
+var picker = document.querySelector(".langs");
+document.addEventListener("click", function (e) {
+  if (picker.open && !picker.contains(e.target)) picker.open = false;
+});
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && picker.open) { picker.open = false; picker.querySelector("summary").focus(); }
 });
 </script>
 </body>
