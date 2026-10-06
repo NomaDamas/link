@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>NomaDamas - build fun things</title>
 <meta name="description" content="An AI open-source hacker house in Seoul. 서울의 AI 오픈소스 해커하우스.">
+<meta name="robots" content="noindex">
 <link rel="alternate" hreflang="ko" href="https://link.nomadamas.org/ko/">
 <link rel="alternate" hreflang="en" href="https://link.nomadamas.org/en/">
 <link rel="alternate" hreflang="zh-Hans" href="https://link.nomadamas.org/cn/">
@@ -30,7 +31,7 @@
 (function () {
   var langs = ["ko","en","cn","jp"];
   var match = {"ko":"ko","en":"en","zh":"cn","ja":"jp"};
-  var utm = {};
+  var utm = {"utm_source":"tiktok","utm_medium":"social","utm_campaign":"profile"};
   var pick = null;
   try {
     var saved = localStorage.getItem("nd-lang");
@@ -49,7 +50,7 @@
     for (var j = 0; j < keys.length; j++) q.set(keys[j], utm[keys[j]]);
     search = "?" + q.toString();
   }
-  location.replace("" + (pick || "en") + "/" + search + location.hash);
+  location.replace("../" + (pick || "en") + "/" + search + location.hash);
 })();
 </script>
 <style>
@@ -64,10 +65,10 @@ a{color:inherit;text-underline-offset:4px}
 <body>
 <noscript>
   <nav aria-label="Language">
-    <a href="ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a>
-    <a href="en/" hreflang="en" lang="en" data-lang="en">English</a>
-    <a href="cn/" hreflang="zh-Hans" lang="zh-Hans" data-lang="cn">中文</a>
-    <a href="jp/" hreflang="ja" lang="ja" data-lang="jp">日本語</a>
+    <a href="../ko/?utm_source=tiktok&amp;utm_medium=social&amp;utm_campaign=profile" hreflang="ko" lang="ko" data-lang="ko">한국어</a>
+    <a href="../en/?utm_source=tiktok&amp;utm_medium=social&amp;utm_campaign=profile" hreflang="en" lang="en" data-lang="en">English</a>
+    <a href="../cn/?utm_source=tiktok&amp;utm_medium=social&amp;utm_campaign=profile" hreflang="zh-Hans" lang="zh-Hans" data-lang="cn">中文</a>
+    <a href="../jp/?utm_source=tiktok&amp;utm_medium=social&amp;utm_campaign=profile" hreflang="ja" lang="ja" data-lang="jp">日本語</a>
   </nav>
 </noscript>
 </body>

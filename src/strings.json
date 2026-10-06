@@ -6,6 +6,10 @@
     "title": "NomaDamas - build fun things",
     "description": "An AI open-source hacker house in Seoul. 서울의 AI 오픈소스 해커하우스."
   },
+  "profiles": {
+    "utm": { "utm_medium": "social", "utm_campaign": "profile" },
+    "sources": ["threads", "x", "linkedin", "instagram", "youtube", "tiktok", "facebook"]
+  },
   "pages": {
     "ko": {
       "lang": "ko",

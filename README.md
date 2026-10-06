@@ -7,7 +7,7 @@ https://link.nomadamas.org
 ## 구성
 
 - `src/page.html`이 언어별 페이지의 틀이고, 언어마다 달라지는 문구는 `src/strings.json`에 있습니다.
-- `node build.mjs`가 둘을 합쳐 `ko/`, `en/`, `cn/`, `jp/`의 `index.html`과 첫 화면 `index.html`을 만듭니다. Node만 있으면 되고 설치할 패키지는 없습니다.
+- `node build.mjs`가 둘을 합쳐 언어 폴더 `ko/`, `en/`, `cn/`, `jp/`와 채널 폴더(`threads/`, `x/` 등, 아래 "프로필에 거는 주소"), 첫 화면 `index.html`을 만듭니다. Node만 있으면 되고 설치할 패키지는 없습니다.
 - 만든 파일도 커밋합니다. GitHub Pages가 빌드 단계 없이 `main` 브랜치 루트를 그대로 배포하기 때문입니다.
 - 만든 파일을 직접 고치면 다음 빌드에서 덮어써집니다. `src/`를 고치고 `node build.mjs`를 돌린 뒤, `node build.mjs --check`가 통과하는지 보면 됩니다.
 - 커스텀 도메인은 Pages 설정에서 걸며, 걸면 GitHub이 `CNAME` 파일을 main에 커밋합니다. `.nojekyll`은 Jekyll 처리를 끄는 빈 파일입니다.
@@ -42,14 +42,19 @@ https://link.nomadamas.org
 
 ## 프로필에 거는 주소
 
-인앱 브라우저는 리퍼러를 비우는 경우가 많습니다. 프로필마다 UTM을 붙인 주소를 걸어 두면 GA4의 세션 소스가 채널별로 갈립니다. 첫 화면이 언어를 골라 주므로 언어와 상관없이 아래 주소 하나씩만 걸면 됩니다.
+인앱 브라우저는 리퍼러를 비우는 경우가 많습니다. 프로필마다 채널 주소를 걸어 두면 GA4의 세션 소스가 채널별로 갈립니다. 언어는 채널 주소가 골라 주므로 채널마다 주소 하나씩만 걸면 됩니다.
 
 | 프로필 | 거는 주소 |
 |---|---|
-| Threads | `https://link.nomadamas.org/?utm_source=threads&utm_medium=social&utm_campaign=profile` |
-| X | `https://link.nomadamas.org/?utm_source=x&utm_medium=social&utm_campaign=profile` |
-| Instagram | `https://link.nomadamas.org/?utm_source=instagram&utm_medium=social&utm_campaign=profile` |
-| YouTube | `https://link.nomadamas.org/?utm_source=youtube&utm_medium=social&utm_campaign=profile` |
-| TikTok | `https://link.nomadamas.org/?utm_source=tiktok&utm_medium=social&utm_campaign=profile` |
-| Facebook | `https://link.nomadamas.org/?utm_source=facebook&utm_medium=social&utm_campaign=profile` |
-| LinkedIn | `https://link.nomadamas.org/?utm_source=linkedin&utm_medium=social&utm_campaign=profile` |
+| Threads | `https://link.nomadamas.org/threads` |
+| X | `https://link.nomadamas.org/x` |
+| LinkedIn | `https://link.nomadamas.org/linkedin` |
+| Instagram | `https://link.nomadamas.org/instagram` |
+| YouTube | `https://link.nomadamas.org/youtube` |
+| TikTok | `https://link.nomadamas.org/tiktok` |
+| Facebook | `https://link.nomadamas.org/facebook` |
+
+- 채널 주소는 첫 화면과 똑같이 언어를 골라 옮기면서 `utm_source=<폴더 이름>&utm_medium=social&utm_campaign=profile`을 붙입니다. 들어올 때 붙어 있던 다른 쿼리(Meta가 덧붙이는 `utm_content`, `fbclid` 등)는 그대로 넘깁니다.
+- 채널 주소는 검색에 잡히지 않게 `noindex`를 겁니다.
+- 채널을 더하려면 `src/strings.json`의 `profiles.sources`에 이름을 넣고 다시 빌드합니다. 언어 폴더와 같은 이름이면 빌드가 멈춥니다.
+- 예전 형식인 `https://link.nomadamas.org/?utm_source=<채널>&utm_medium=social&utm_campaign=profile`도 그대로 동작합니다.

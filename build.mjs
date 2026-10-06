@@ -1,5 +1,5 @@
 // src/의 템플릿과 문구로 언어별 정적 페이지를 만든다. 의존성 없이 Node만 있으면 된다.
-//   node build.mjs          index.html, ko/, en/, cn/, jp/ 를 다시 쓴다
+//   node build.mjs          index.html, 언어 폴더(ko/ en/ cn/ jp/), 채널 폴더(threads/ x/ ...)를 다시 쓴다
 //   node build.mjs --check  다시 쓰지 않고, 커밋된 파일이 src/와 어긋나면 실패한다
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
@@ -29,8 +29,10 @@ const hreflang = [
 ].join("\n");
 
 // 언어 링크는 상대 경로라 임시 주소와 로컬 서버에서도 그대로 동작한다
-const langLink = (l, from, current) =>
-	`<a href="${from}${l}/" hreflang="${cfg.pages[l].lang}" lang="${cfg.pages[l].lang}" data-lang="${l}"${current ? ' aria-current="page"' : ""}>${cfg.pages[l].name}</a>`;
+const langLink = (l, from, current, query = "") =>
+	`<a href="${from}${l}/${query}" hreflang="${cfg.pages[l].lang}" lang="${cfg.pages[l].lang}" data-lang="${l}"${current ? ' aria-current="page"' : ""}>${cfg.pages[l].name}</a>`;
+const queryOf = (utm) =>
+	Object.keys(utm).length ? `?${new URLSearchParams(utm).toString().replace(/&/g, "&amp;")}` : "";
 
 const outputs = {};
 for (const l of langs) {
@@ -51,19 +53,33 @@ for (const l of langs) {
 		`${l}/index.html`,
 	);
 }
-outputs["index.html"] = fill(
-	root,
-	{
-		...cfg.root,
-		hreflang,
-		favicon,
-		langs: JSON.stringify(langs),
-		match: JSON.stringify(cfg.match),
-		fallback: cfg.fallback,
-		fallbackLinks: langs.map((x) => langLink(x, "", false)).join("\n    "),
-	},
-	"index.html",
-);
+// 첫 화면과 채널 주소는 같은 틀을 쓴다. 채널 주소는 한 단계 아래 폴더라 ../로 나가고, 그 채널의 UTM을 덧씌운다
+const rootPage = (rel, base, utm) =>
+	fill(
+		root,
+		{
+			...cfg.root,
+			hreflang,
+			favicon,
+			langs: JSON.stringify(langs),
+			match: JSON.stringify(cfg.match),
+			fallback: cfg.fallback,
+			base,
+			utm: JSON.stringify(utm),
+			robots: base ? '\n<meta name="robots" content="noindex">' : "",
+			fallbackLinks: langs.map((x) => langLink(x, base, false, queryOf(utm))).join("\n    "),
+		},
+		rel,
+	);
+outputs["index.html"] = rootPage("index.html", "", {});
+
+// 프로필에 거는 채널 주소. 폴더 이름이 곧 utm_source 값이다
+const taken = new Set([...langs, "src"]);
+for (const source of cfg.profiles.sources) {
+	if (taken.has(source)) throw new Error(`채널 이름 ${source}이 다른 폴더와 겹칩니다`);
+	taken.add(source);
+	outputs[`${source}/index.html`] = rootPage(`${source}/index.html`, "../", { utm_source: source, ...cfg.profiles.utm });
+}
 
 if (process.argv.includes("--check")) {
 	const stale = Object.entries(outputs)
