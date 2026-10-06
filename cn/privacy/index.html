@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>隐私与访问统计说明 | NomaDamas</title>
+<meta name="description" content="说明 link.nomadamas.org 使用的访问统计工具，以及在浏览器中保存的内容。">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#07080D" media="(prefers-color-scheme:dark)">
+<meta name="theme-color" content="#F6F6F5" media="(prefers-color-scheme:light)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%22138%20222%20656%20443%22%3E%3Cpath%20fill%3D%22%23E9B44C%22%20d%3D%22M450.0%2C356.3C450.0%2C347.7%20454.0%2C330.5%20458.7%2C319.2C461.1%2C313.3%20461.6%2C312.7%20467.1%2C310.0C470.4%2C308.4%20475.8%2C306.4%20479.3%2C305.6C488.7%2C303.3%20505.9%2C300.0%20508.5%2C300.0C511.4%2C300.0%20514.0%2C299.0%20514.0%2C298.0C514.0%2C297.5%20511.9%2C296.8%20509.2%2C296.5C505.0%2C295.9%20497.4%2C294.4%20481.5%2C290.9C471.9%2C288.8%20465.0%2C285.8%20462.1%2C282.4C457.7%2C277.4%20450.0%2C250.4%20450.0%2C239.9C450.0%2C235.4%20448.4%2C233.9%20447.7%2C237.8C442.6%2C265.8%20438.2%2C280.1%20433.4%2C284.1C430.6%2C286.4%20421.5%2C289.7%20413.0%2C291.5C408.9%2C292.3%20402.4%2C293.7%20398.5%2C294.5C394.7%2C295.3%20390.5%2C296.0%20389.3%2C296.0C388.1%2C296.0%20385.9%2C296.5%20384.3%2C297.1C382.1%2C297.9%20381.9%2C298.3%20383.0%2C299.0C383.8%2C299.6%20385.9%2C300.0%20387.6%2C300.0C390.7%2C300.0%20406.3%2C302.8%20416.5%2C305.1C419.2%2C305.7%20423.1%2C307.0%20425.0%2C308.0C426.9%2C309.0%20429.8%2C310.4%20431.4%2C311.1C433.0%2C311.9%20435.1%2C313.8%20436.0%2C315.3C438.9%2C320.0%20443.6%2C335.9%20446.0%2C348.8C448.3%2C361.4%20450.0%2C364.6%20450.0%2C356.3Z%22%2F%3E%3Cpath%20fill%3D%22%23EBEEF6%22%20d%3D%22M175.1%2C649.8C183.3%2C646.4%20190.1%2C642.3%20194.5%2C637.9C196.7%2C635.8%20200.5%2C632.3%20202.8%2C630.3C207.7%2C626.2%20213.9%2C618.1%20225.0%2C601.5C229.0%2C595.5%20233.5%2C589.1%20235.0%2C587.4C236.5%2C585.7%20239.5%2C580.5%20241.8%2C575.9C244.0%2C571.3%20247.4%2C565.7%20249.2%2C563.5C251.1%2C561.3%20257.8%2C551.6%20264.2%2C542.0C270.5%2C532.4%20277.9%2C522.0%20280.7%2C519.0C283.5%2C516.0%20286.4%2C512.1%20287.3%2C510.4C288.2%2C508.7%20291.7%2C504.6%20295.2%2C501.2C298.7%2C497.8%20305.3%2C491.3%20310.0%2C486.7C317.9%2C478.9%20326.8%2C472.0%20328.7%2C472.0C329.2%2C472.0%20332.6%2C470.4%20336.2%2C468.5C361.6%2C455.0%20388.0%2C453.2%20406.7%2C463.5C409.3%2C465.0%20414.3%2C467.8%20417.7%2C469.7C421.2%2C471.6%20424.3%2C473.7%20424.7%2C474.4C425.2%2C475.1%20427.4%2C477.9%20429.7%2C480.6C443.1%2C496.3%20446.2%2C501.1%20448.7%2C509.0C449.6%2C512.0%20451.1%2C515.6%20452.1%2C517.0C453.0%2C518.4%20454.7%2C522.4%20456.0%2C525.9C457.2%2C529.4%20460.4%2C537.4%20463.1%2C543.7C465.8%2C549.9%20468.0%2C555.6%20468.0%2C556.3C468.0%2C557.0%20468.4%2C558.0%20468.8%2C558.5C469.3%2C559.1%20470.2%2C561.5%20470.9%2C564.0C472.9%2C571.1%20480.6%2C585.8%20486.6%2C594.0C489.6%2C598.1%20493.0%2C602.9%20494.1%2C604.6C495.9%2C607.5%20501.5%2C612.2%20515.1%2C622.4C520.8%2C626.6%20521.9%2C627.2%20530.0%2C630.1C535.9%2C632.3%20538.1%2C632.5%20554.5%2C632.5C575.4%2C632.5%20578.2%2C631.9%20592.0%2C624.7C602.9%2C619.0%20606.8%2C616.4%20609.3%2C613.3C610.3%2C612.1%20613.1%2C610.1%20615.7%2C608.8C620.8%2C606.3%20630.1%2C596.6%20633.1%2C590.8C634.2%2C588.7%20635.4%2C587.0%20635.9%2C587.0C636.8%2C587.0%20648.0%2C570.7%20648.0%2C569.4C648.0%2C569.1%20649.3%2C567.0%20650.8%2C564.7C652.4%2C562.4%20654.2%2C558.5%20654.9%2C556.0C656.3%2C550.7%20656.8%2C549.3%20660.3%2C542.0C661.7%2C539.0%20664.2%2C532.5%20665.8%2C527.5C667.4%2C522.5%20669.4%2C516.7%20670.2%2C514.5C671.1%2C512.3%20672.3%2C508.7%20673.0%2C506.5C673.7%2C504.3%20675.6%2C499.7%20677.1%2C496.2C678.7%2C492.8%20680.0%2C489.6%20680.0%2C489.1C680.0%2C487.1%20691.3%2C478.1%20697.6%2C475.1L704.5%2C471.8L725.5%2C471.9C748.2%2C472.0%20756.3%2C471.0%20762.5%2C467.5C768.4%2C464.1%20771.5%2C460.0%20777.6%2C447.3C781.2%2C439.9%20781.4%2C427.4%20778.1%2C417.5C772.6%2C400.7%20765.3%2C392.0%20750.0%2C383.7C744.2%2C380.6%20742.3%2C380.1%20731.3%2C379.1C724.6%2C378.5%20715.5%2C378.0%20711.1%2C378.0C706.7%2C378.0%20702.1%2C377.6%20700.8%2C377.1C699.5%2C376.6%20694.7%2C374.7%20690.0%2C373.0C685.3%2C371.2%20680.1%2C369.2%20678.5%2C368.4C670.7%2C365.0%20650.5%2C362.1%20634.6%2C362.0C623.3%2C362.0%20622.5%2C361.9%20617.4%2C359.0C614.3%2C357.1%20610.7%2C354.0%20608.6%2C351.1C604.6%2C345.4%20598.5%2C340.9%20591.7%2C338.6C586.1%2C336.7%20583.9%2C336.6%20578.7%2C338.1C571.1%2C340.2%20564.0%2C349.6%20564.0%2C357.5C564.0%2C362.1%20569.2%2C373.6%20573.1%2C377.6L576.2%2C380.8L572.4%2C385.6C567.6%2C391.9%20564.4%2C399.2%20563.0%2C407.0C561.6%2C414.7%20561.6%2C456.8%20563.0%2C477.0C564.3%2C495.9%20564.3%2C515.7%20562.9%2C529.9C561.3%2C547.7%20562.0%2C548.5%20574.0%2C542.5C582.2%2C538.4%20585.0%2C535.0%20588.0%2C525.5C589.2%2C521.6%20590.5%2C518.0%20591.0%2C517.5C594.1%2C513.6%20595.2%2C483.5%20593.0%2C462.5C591.4%2C447.1%20591.6%2C421.8%20593.4%2C415.5C595.8%2C406.8%20596.7%2C405.3%20602.7%2C400.8C612.5%2C393.3%20611.5%2C393.5%20632.0%2C393.6C652.3%2C393.7%20658.4%2C394.6%20676.8%2C400.4C694.0%2C405.8%20705.0%2C408.0%20715.2%2C408.0C737.5%2C408.0%20748.0%2C415.5%20748.0%2C431.4C748.0%2C442.2%20748.5%2C442.0%20724.2%2C441.8C710.2%2C441.8%20702.7%2C442.1%20701.3%2C442.9C700.1%2C443.5%20698.3%2C444.0%20697.2%2C444.0C693.5%2C444.0%20676.7%2C450.1%20672.6%2C453.0C660.1%2C461.6%20652.1%2C472.0%20646.0%2C487.5C644.7%2C490.8%20643.3%2C494.0%20642.8%2C494.6C641.7%2C496.0%20632.0%2C524.7%20632.0%2C526.5C632.0%2C528.5%20627.8%2C538.3%20626.0%2C540.5C625.2%2C541.6%20623.4%2C544.5%20622.1%2C547.0C614.6%2C561.2%20601.8%2C574.9%20589.4%2C582.0L581.5%2C586.5L567.0%2C586.5C555.3%2C586.5%20551.6%2C586.2%20548.1%2C584.7C539.3%2C581.1%20519.6%2C564.1%20516.1%2C557.1C513.7%2C552.4%20507.5%2C542.2%20505.6%2C540.1C504.0%2C538.2%20496.0%2C522.5%20496.0%2C521.1C496.0%2C519.6%20485.2%2C497.5%20483.2%2C494.9C480.8%2C491.8%20472.9%2C478.4%20471.3%2C474.7C470.6%2C473.1%20468.9%2C470.7%20467.6%2C469.2C466.3%2C467.7%20462.5%2C463.3%20459.2%2C459.4C453.1%2C452.2%20443.1%2C444.0%20433.0%2C438.0C430.0%2C436.2%20426.8%2C434.1%20425.9%2C433.3C423.0%2C430.8%20411.7%2C426.9%20403.6%2C425.4C386.4%2C422.4%20354.9%2C424.0%20341.5%2C428.6C334.2%2C431.0%20314.0%2C441.7%20310.5%2C444.9C308.9%2C446.4%20305.9%2C448.3%20304.0%2C449.0C299.7%2C450.7%20288.8%2C459.5%20286.6%2C463.2C285.7%2C464.7%20283.2%2C467.2%20281.2%2C468.7C274.7%2C473.4%20266.9%2C481.4%20264.8%2C485.4C263.7%2C487.5%20260.9%2C491.1%20258.6%2C493.4C253.8%2C498.1%20244.6%2C509.5%20242.7%2C513.3C240.7%2C517.1%20230.2%2C532.3%20224.9%2C539.1C222.4%2C542.3%20219.8%2C546.6%20219.1%2C548.7C218.4%2C550.8%20215.9%2C555.2%20213.5%2C558.5C207.0%2C567.4%20198.0%2C580.9%20195.2%2C586.0C191.8%2C592.2%20182.4%2C605.7%20178.2%2C610.4C176.3%2C612.5%20173.9%2C616.2%20172.8%2C618.7C171.7%2C621.3%20166.8%2C627.2%20160.9%2C633.3C155.5%2C638.9%20150.7%2C644.4%20150.4%2C645.4C149.9%2C646.8%20150.5%2C648.1%20152.4%2C649.7C156.2%2C652.9%20167.4%2C653.0%20175.1%2C649.8Z%22%2F%3E%3C%2Fsvg%3E">
+<script>
+// 이 안내 페이지에는 분석 태그를 싣지 않는다. 저장해 둔 테마만 첫 화면 전에 적용해 깜빡임을 막는다
+try { var t = localStorage.getItem("nd-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+
+:root{
+  color-scheme:light;
+  --void:#F6F6F5; --surface:#FFFFFF;
+  --line:#E4E4E0;
+  --text:#0B0D13; --dim:#5C6376; --faint:#7D8496;
+  --sand:#A96A0E; --glow:#E9B44C;
+  --sky:0; --dune:.05; --wash:.025; --grain:.16;
+  --shadow:0 1px 2px rgba(16,18,26,.05), 0 10px 30px -16px rgba(16,18,26,.20);
+  --f-display:"Syne","Pretendard Variable",Pretendard,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --f-text:"PingFang SC","Hiragino Sans GB","Noto Sans SC","Microsoft YaHei","Pretendard Variable",Pretendard,system-ui,sans-serif;
+  --f-tag:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+  --ease:cubic-bezier(.22,.68,.28,1);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;
+  --void:#07080D; --surface:#10131A;
+  --line:#1C212D;
+  --text:#EBEEF6; --dim:#8A92A6; --faint:#596173;
+  --sand:#E9B44C; --glow:#E9B44C;
+  --sky:1; --dune:.16; --wash:.05; --grain:.30;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 24px 50px -28px rgba(0,0,0,.9);
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --void:#07080D; --surface:#10131A;
+  --line:#1C212D;
+  --text:#EBEEF6; --dim:#8A92A6; --faint:#596173;
+  --sand:#E9B44C; --glow:#E9B44C;
+  --sky:1; --dune:.16; --wash:.05; --grain:.30;
+  --shadow:0 1px 2px rgba(0,0,0,.5), 0 24px 50px -28px rgba(0,0,0,.9);
+}
+
+/* 링크 페이지와 같은 색과 글꼴을 쓰는 한 단짜리 문서다 */
+body{background:var(--void);color:var(--text);font-family:var(--f-text);
+  line-height:1.75;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration-color:var(--sand);text-decoration-thickness:1px;text-underline-offset:3px;
+  transition:color .16s}
+@media (hover:hover){a:hover{color:var(--sand)}}
+:focus-visible{outline:2px solid var(--sand);outline-offset:3px;border-radius:6px}
+
+.wrap{max-width:38rem;margin:0 auto;
+  padding:clamp(28px,7vh,64px) max(20px,env(safe-area-inset-right,0px)) max(36px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));
+  display:grid;gap:clamp(28px,5vh,40px)}
+.wrap>*{min-width:0}
+
+.back{display:inline-flex;align-items:center;gap:8px;padding-block:6px;font-family:var(--f-display);font-weight:800;
+  font-size:1.05rem;letter-spacing:-.03em;line-height:1;text-decoration:none}
+.back svg{width:14px;height:14px;flex:none;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;transition:transform .2s var(--ease)}
+@media (hover:hover){.back:hover svg{transform:translateX(-2px)}}
+h1{margin:20px 0 0;font-family:var(--f-tag);font-weight:800;font-size:clamp(1.55rem,6.4vw,2rem);
+  letter-spacing:-.04em;line-height:1.2;text-wrap:balance}
+.meta{margin:10px 0 0;font-family:var(--f-mono);font-size:.74rem;color:var(--dim)}
+
+main{display:grid;gap:24px}
+.lede{margin:0;font-size:1rem}
+section{display:grid;gap:10px;padding-top:22px;border-top:1px solid var(--line)}
+h2{margin:0;display:flex;align-items:center;gap:9px;font-family:var(--f-tag);font-size:1rem;font-weight:700;
+  letter-spacing:-.02em;line-height:1.4}
+h2::before{content:"";width:6px;height:6px;flex:none;border-radius:50%;background:var(--sand)}
+section p,section ul{margin:0;font-size:.93rem}
+section ul{padding-left:1.15em;display:grid;gap:6px}
+section li::marker{color:var(--faint)}
+code{font-family:var(--f-mono);font-size:.82em;padding:.08em .38em;border:1px solid var(--line);border-radius:6px;
+  background:var(--surface);white-space:nowrap}
+
+.foot{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--line);
+  font-family:var(--f-mono);font-size:.72rem;color:var(--dim)}
+.tt{margin-left:auto;display:grid;place-items:center;width:40px;height:40px;flex:none;
+  border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--dim);
+  cursor:pointer;padding:0;transition:color .16s,border-color .16s}
+.tt svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){.tt:hover{color:var(--sand);border-color:var(--sand)}}
+.tt .moon{display:none}
+:root[data-theme="dark"] .tt .moon,
+:root[data-theme="light"] .tt .sun{display:block}
+:root[data-theme="dark"] .tt .sun,
+:root[data-theme="light"] .tt .moon{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tt .sun{display:none}
+  :root:not([data-theme="light"]) .tt .moon{display:block}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="back" href="../"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5"/></svg>NomaDamas</a>
+    <h1>隐私与访问统计说明</h1>
+    <p class="meta"><time datetime="2026-10-06">更新于 2026 年 10 月 6 日</time></p>
+  </header>
+
+  <main>
+    <p class="lede">link.nomadamas.org 使用 Google Analytics 4，了解访客来自哪些频道、打开了哪些链接。本说明页面不做统计。</p>
+
+    <section>
+      <h2>收集的信息</h2>
+      <ul>
+        <li>浏览的页面、语言和停留时间</li>
+        <li>打开的链接（前往了哪个频道）</li>
+        <li>来源：上一个页面的地址，以及访问地址中带有的 UTM 等参数</li>
+        <li>浏览器和设备类型、屏幕尺寸、语言设置，以及根据 IP 地址推测的国家和城市</li>
+      </ul>
+      <p>我们不收集姓名、电子邮件、账号等信息。这些数据只用于统计各频道的访问量和各链接的点击量。</p>
+    </section>
+
+    <section>
+      <h2>Cookie 与浏览器存储</h2>
+      <ul>
+        <li><code>_ga</code>、<code>_ga_QG2DERJBRQ</code>：Google Analytics 用来区分访客和访问次数的 Cookie，自最后一次访问起最长保留两年。</li>
+        <li><code>nd-lang</code>、<code>nd-theme</code>：记住您选择的语言和主题，只保存在您的浏览器中，不会发送到任何地方。</li>
+        <li><code>nd-ref</code>：首页会暂时保存您来自哪个页面，语言页面将其交给 Google Analytics 后立即删除。关闭标签页后也会消失。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>托管与字体</h2>
+      <p>本站托管在 GitHub Pages 上，GitHub 出于安全考虑会记录访客的 IP 地址。字体从 Google Fonts 和 jsDelivr 加载，因此您的浏览器也会连接这两项服务。</p>
+    </section>
+
+    <section>
+      <h2>如果不希望被统计</h2>
+      <ul>
+        <li>可以在浏览器设置中阻止或清除 Cookie。</li>
+        <li>可以安装 <a href="https://tools.google.com/dlpage/gaoptout?hl=zh-CN">Google Analytics 停用浏览器插件</a>。</li>
+        <li>无论哪种方式，所有链接都能照常打开。</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Google 如何使用这些信息</h2>
+      <p>请参阅<a href="https://policies.google.com/technologies/partner-sites?hl=zh-CN">Google 如何使用来自使用其服务的网站或应用的信息</a>。</p>
+    </section>
+
+    <section>
+      <h2>联系我们</h2>
+      <p>请在 <a href="https://github.com/NomaDamas/link/issues">GitHub</a> 上提交 issue。</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Backed by Markr Inc.</span>
+    <button class="tt" type="button" aria-label="切换浅色与深色主题">
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.5 6.5 4.9 4.9M19.1 19.1l-1.6-1.6M17.5 6.5l1.6-1.6M4.9 19.1l1.6-1.6"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"/></svg>
+    </button>
+  </footer>
+</div>
+
+<script>
+document.querySelector(".tt").addEventListener("click", function () {
+  var r = document.documentElement;
+  var dark = r.dataset.theme ? r.dataset.theme === "dark"
+           : matchMedia("(prefers-color-scheme:dark)").matches;
+  r.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("nd-theme", r.dataset.theme); } catch (e) {}
+});
+</script>
+</body>
+</html>

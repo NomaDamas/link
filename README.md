@@ -7,7 +7,8 @@ https://link.nomadamas.org
 ## 구성
 
 - `src/page.html`이 언어별 페이지의 틀이고, 언어마다 달라지는 문구는 `src/strings.json`에 있습니다.
-- `node build.mjs`가 둘을 합쳐 언어 폴더 `ko/`, `en/`, `cn/`, `jp/`와 채널 폴더(`threads/`, `x/` 등, 아래 "프로필에 거는 주소"), 첫 화면 `index.html`을 만듭니다. Node만 있으면 되고 설치할 패키지는 없습니다.
+- 색과 글꼴 토큰은 `src/tokens.css` 한 곳에 있고, 빌드가 링크 페이지와 안내 페이지 틀의 `{{tokens}}` 자리에 넣습니다. 색을 바꿀 때는 이 파일만 고치면 됩니다.
+- `node build.mjs`가 이것들을 합쳐 언어 폴더 `ko/`, `en/`, `cn/`, `jp/`와 그 아래 방문 분석 안내(`privacy/`), 채널 폴더(`threads/`, `x/` 등, 아래 "프로필에 거는 주소"), 첫 화면 `index.html`, 안내 주소 `privacy/index.html`을 만듭니다. Node만 있으면 되고 설치할 패키지는 없습니다.
 - 만든 파일도 커밋합니다. GitHub Pages가 빌드 단계 없이 `main` 브랜치 루트를 그대로 배포하기 때문입니다.
 - 만든 파일을 직접 고치면 다음 빌드에서 덮어써집니다. `src/`를 고치고 `node build.mjs`를 돌린 뒤, `node build.mjs --check`가 통과하는지 보면 됩니다.
 - 커스텀 도메인은 Pages 설정에서 걸며, 걸면 GitHub이 `CNAME` 파일을 main에 커밋합니다. `.nojekyll`은 Jekyll 처리를 끄는 빈 파일입니다.
@@ -23,7 +24,7 @@ https://link.nomadamas.org
 - 옮길 때 쿼리와 해시를 그대로 붙이므로 프로필 주소의 UTM이 남습니다. 주소는 상대 경로라 임시 주소에서도 맞게 갑니다.
 - 언어 페이지는 `hreflang`으로 서로를 가리키고, `x-default`는 첫 화면입니다.
 - 슬로건 `build fun things`는 모든 언어에서 영어 그대로 둡니다. 그 아래 한 줄 소개만 언어별로 씁니다.
-- 언어를 더하려면 `src/strings.json`의 `pages`에 항목을 하나 넣고, `match`에 브라우저 언어 코드를 이은 뒤 다시 빌드하면 됩니다.
+- 언어를 더하려면 `src/strings.json`의 `pages`에 항목을 하나 넣고, `match`에 브라우저 언어 코드를 이은 뒤 다시 빌드하면 됩니다. 그 언어의 안내 본문 `src/privacy/<언어>.html`이 없으면 빌드가 멈춥니다.
 
 ## 링크 고치기
 
@@ -39,6 +40,15 @@ https://link.nomadamas.org
 - 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, blog, threads, x, linkedin, instagram, youtube, tiktok, facebook)와 `link_url`로 볼 수 있습니다.
 - GitHub로 나간 클릭은 맞춤 이벤트 `github_click`(`event_name` 같음 `click`, `link_domain` 같음 `github.com`)으로 따로 세고 주요 이벤트로 표시해 두었습니다. 블로그 속성과 같은 정의입니다.
 - 언어별로 보려면 페이지 경로 `/ko/`, `/en/`, `/cn/`, `/jp/`로 거르면 됩니다.
+
+## 방문 분석 안내
+
+GA4 약관은 사이트에 Google 애널리틱스를 쓴다는 사실과 쿠키 사용을 알리도록 요구합니다. 그래서 언어마다 안내 페이지를 둡니다.
+
+- 주소는 `/ko/privacy/`, `/en/privacy/`, `/cn/privacy/`, `/jp/privacy/`이고, 각 언어 페이지 하단 링크에서 들어갑니다. `/privacy/`는 첫 화면처럼 언어를 골라 해당 안내로 옮깁니다.
+- 틀은 `src/privacy.html`, 본문은 `src/privacy/<언어>.html`입니다. 제목, 하단 링크 문구, 갱신일 표기는 `src/strings.json`의 `privacyLabel`, `privacyTitle`, `privacyDescription`, `privacyUpdated`에, 기계가 읽는 갱신일은 `privacyDate`에 있습니다.
+- 안내 페이지에는 GA를 싣지 않고 `noindex`를 겁니다.
+- 측정 ID, 이벤트, 쿠키, 브라우저 저장 값(`nd-lang`, `nd-theme`, `nd-ref`) 가운데 하나라도 바뀌면 네 언어 본문과 갱신일을 함께 고칩니다. 블로그의 `/privacy/`처럼 실제로 켜진 도구만 적습니다.
 
 ## 프로필에 거는 주소
 

@@ -56,38 +56,7 @@ try { var t = localStorage.getItem("nd-theme"); if (t) document.documentElement.
 html{-webkit-text-size-adjust:100%}
 body{margin:0}
 
-:root{
-  color-scheme:light;
-  --void:#F6F6F5; --surface:#FFFFFF;
-  --line:#E4E4E0;
-  --text:#0B0D13; --dim:#5C6376; --faint:#7D8496;
-  --sand:#A96A0E; --glow:#E9B44C;
-  --sky:0; --dune:.05; --wash:.025; --grain:.16;
-  --shadow:0 1px 2px rgba(16,18,26,.05), 0 10px 30px -16px rgba(16,18,26,.20);
-  --f-display:"Syne","Pretendard Variable",Pretendard,sans-serif;
-  --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
-  --f-text:{{fontStack}};
-  --f-tag:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
-  --ease:cubic-bezier(.22,.68,.28,1);
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  color-scheme:dark;
-  --void:#07080D; --surface:#10131A;
-  --line:#1C212D;
-  --text:#EBEEF6; --dim:#8A92A6; --faint:#596173;
-  --sand:#E9B44C; --glow:#E9B44C;
-  --sky:1; --dune:.16; --wash:.05; --grain:.30;
-  --shadow:0 1px 2px rgba(0,0,0,.5), 0 24px 50px -28px rgba(0,0,0,.9);
-}}
-:root[data-theme="dark"]{
-  color-scheme:dark;
-  --void:#07080D; --surface:#10131A;
-  --line:#1C212D;
-  --text:#EBEEF6; --dim:#8A92A6; --faint:#596173;
-  --sand:#E9B44C; --glow:#E9B44C;
-  --sky:1; --dune:.16; --wash:.05; --grain:.30;
-  --shadow:0 1px 2px rgba(0,0,0,.5), 0 24px 50px -28px rgba(0,0,0,.9);
-}
+{{tokens}}
 
 body{background:var(--void);color:var(--text);font-family:var(--f-text);
   line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
@@ -189,6 +158,11 @@ a{color:inherit}
 /* ---------- footer ---------- */
 .foot{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--line);
   font-family:var(--f-mono);font-size:.72rem;color:var(--dim)}
+/* 좁은 화면에서는 안내 링크가 다음 줄로 내려가고, 테마 버튼은 오른쪽에 남는다 */
+.foot .by{display:flex;flex-wrap:wrap;align-items:center;gap:0 14px;min-width:0}
+.foot .by a{padding-block:6px;color:var(--dim);text-decoration:underline;text-decoration-color:var(--line);
+  text-underline-offset:3px;transition:color .16s,text-decoration-color .16s}
+@media (hover:hover){.foot .by a:hover{color:var(--sand);text-decoration-color:var(--sand)}}
 .tt{margin-left:auto;display:grid;place-items:center;width:40px;height:40px;flex:none;
   border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--dim);
   cursor:pointer;padding:0;transition:color .16s,border-color .16s}
@@ -277,7 +251,7 @@ a{color:inherit}
   </main>
 
   <footer class="foot rise" style="--i:13">
-    <span>Backed by Markr Inc.</span>
+    <span class="by"><span>Backed by Markr Inc.</span><a href="privacy/">{{privacyLabel}}</a></span>
     <button class="tt" type="button" aria-label="{{themeLabel}}">
       <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.5 6.5 4.9 4.9M19.1 19.1l-1.6-1.6M17.5 6.5l1.6-1.6M4.9 19.1l1.6-1.6"/></svg>
       <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"/></svg>

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{privacyTitle}} | NomaDamas</title>
+<meta name="description" content="{{privacyDescription}}">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#07080D" media="(prefers-color-scheme:dark)">
+<meta name="theme-color" content="#F6F6F5" media="(prefers-color-scheme:light)">
+{{favicon}}
+<script>
+// 이 안내 페이지에는 분석 태그를 싣지 않는다. 저장해 둔 테마만 첫 화면 전에 적용해 깜빡임을 막는다
+try { var t = localStorage.getItem("nd-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=JetBrains+Mono:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.css">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+
+{{tokens}}
+
+/* 링크 페이지와 같은 색과 글꼴을 쓰는 한 단짜리 문서다 */
+body{background:var(--void);color:var(--text);font-family:var(--f-text);
+  line-height:1.75;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration-color:var(--sand);text-decoration-thickness:1px;text-underline-offset:3px;
+  transition:color .16s}
+@media (hover:hover){a:hover{color:var(--sand)}}
+:focus-visible{outline:2px solid var(--sand);outline-offset:3px;border-radius:6px}
+
+.wrap{max-width:38rem;margin:0 auto;
+  padding:clamp(28px,7vh,64px) max(20px,env(safe-area-inset-right,0px)) max(36px,env(safe-area-inset-bottom,0px)) max(20px,env(safe-area-inset-left,0px));
+  display:grid;gap:clamp(28px,5vh,40px)}
+.wrap>*{min-width:0}
+
+.back{display:inline-flex;align-items:center;gap:8px;padding-block:6px;font-family:var(--f-display);font-weight:800;
+  font-size:1.05rem;letter-spacing:-.03em;line-height:1;text-decoration:none}
+.back svg{width:14px;height:14px;flex:none;fill:none;stroke:currentColor;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;transition:transform .2s var(--ease)}
+@media (hover:hover){.back:hover svg{transform:translateX(-2px)}}
+h1{margin:20px 0 0;font-family:var(--f-tag);font-weight:800;font-size:clamp(1.55rem,6.4vw,2rem);
+  letter-spacing:-.04em;line-height:1.2;text-wrap:balance}
+.meta{margin:10px 0 0;font-family:var(--f-mono);font-size:.74rem;color:var(--dim)}
+
+main{display:grid;gap:24px}
+.lede{margin:0;font-size:1rem}
+section{display:grid;gap:10px;padding-top:22px;border-top:1px solid var(--line)}
+h2{margin:0;display:flex;align-items:center;gap:9px;font-family:var(--f-tag);font-size:1rem;font-weight:700;
+  letter-spacing:-.02em;line-height:1.4}
+h2::before{content:"";width:6px;height:6px;flex:none;border-radius:50%;background:var(--sand)}
+section p,section ul{margin:0;font-size:.93rem}
+section ul{padding-left:1.15em;display:grid;gap:6px}
+section li::marker{color:var(--faint)}
+code{font-family:var(--f-mono);font-size:.82em;padding:.08em .38em;border:1px solid var(--line);border-radius:6px;
+  background:var(--surface);white-space:nowrap}
+
+.foot{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--line);
+  font-family:var(--f-mono);font-size:.72rem;color:var(--dim)}
+.tt{margin-left:auto;display:grid;place-items:center;width:40px;height:40px;flex:none;
+  border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--dim);
+  cursor:pointer;padding:0;transition:color .16s,border-color .16s}
+.tt svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){.tt:hover{color:var(--sand);border-color:var(--sand)}}
+.tt .moon{display:none}
+:root[data-theme="dark"] .tt .moon,
+:root[data-theme="light"] .tt .sun{display:block}
+:root[data-theme="dark"] .tt .sun,
+:root[data-theme="light"] .tt .moon{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tt .sun{display:none}
+  :root:not([data-theme="light"]) .tt .moon{display:block}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:.001ms!important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="back" href="../"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5"/></svg>NomaDamas</a>
+    <h1>{{privacyTitle}}</h1>
+    <p class="meta"><time datetime="{{privacyDate}}">{{privacyUpdated}}</time></p>
+  </header>
+
+  <main>
+{{privacyBody}}
+  </main>
+
+  <footer class="foot">
+    <span>Backed by Markr Inc.</span>
+    <button class="tt" type="button" aria-label="{{themeLabel}}">
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.5 6.5 4.9 4.9M19.1 19.1l-1.6-1.6M17.5 6.5l1.6-1.6M4.9 19.1l1.6-1.6"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"/></svg>
+    </button>
+  </footer>
+</div>
+
+<script>
+document.querySelector(".tt").addEventListener("click", function () {
+  var r = document.documentElement;
+  var dark = r.dataset.theme ? r.dataset.theme === "dark"
+           : matchMedia("(prefers-color-scheme:dark)").matches;
+  r.dataset.theme = dark ? "light" : "dark";
+  try { localStorage.setItem("nd-theme", r.dataset.theme); } catch (e) {}
+});
+</script>
+</body>
+</html>

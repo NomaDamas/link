@@ -1,5 +1,6 @@
 {
   "gaId": "G-QG2DERJBRQ",
+  "privacyDate": "2026-10-06",
   "fallback": "en",
   "match": { "ko": "ko", "en": "en", "zh": "cn", "ja": "jp" },
   "root": {
@@ -22,6 +23,10 @@
       "channels": "채널",
       "langNavLabel": "언어 선택",
       "themeLabel": "밝은 테마와 어두운 테마 전환",
+      "privacyLabel": "방문 분석 안내",
+      "privacyTitle": "방문 분석 안내",
+      "privacyDescription": "link.nomadamas.org가 쓰는 방문 분석 도구와 브라우저에 남기는 값을 안내합니다.",
+      "privacyUpdated": "2026년 10월 6일 갱신",
       "fontStack": "\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,\"Apple SD Gothic Neo\",system-ui,sans-serif"
     },
     "en": {
@@ -35,6 +40,10 @@
       "channels": "Channels",
       "langNavLabel": "Language",
       "themeLabel": "Switch between light and dark theme",
+      "privacyLabel": "Privacy",
+      "privacyTitle": "Privacy and analytics",
+      "privacyDescription": "What link.nomadamas.org measures with Google Analytics and what it keeps in your browser.",
+      "privacyUpdated": "Updated October 6, 2026",
       "fontStack": "\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif"
     },
     "cn": {
@@ -48,6 +57,10 @@
       "channels": "频道",
       "langNavLabel": "语言",
       "themeLabel": "切换浅色与深色主题",
+      "privacyLabel": "隐私说明",
+      "privacyTitle": "隐私与访问统计说明",
+      "privacyDescription": "说明 link.nomadamas.org 使用的访问统计工具，以及在浏览器中保存的内容。",
+      "privacyUpdated": "更新于 2026 年 10 月 6 日",
       "fontStack": "\"PingFang SC\",\"Hiragino Sans GB\",\"Noto Sans SC\",\"Microsoft YaHei\",\"Pretendard Variable\",Pretendard,system-ui,sans-serif"
     },
     "jp": {
@@ -61,6 +74,10 @@
       "channels": "チャンネル",
       "langNavLabel": "言語",
       "themeLabel": "ライトテーマとダークテーマを切り替える",
+      "privacyLabel": "プライバシー",
+      "privacyTitle": "プライバシーとアクセス解析",
+      "privacyDescription": "link.nomadamas.org が使うアクセス解析ツールと、ブラウザに保存する内容について説明します。",
+      "privacyUpdated": "2026年10月6日 更新",
       "fontStack": "\"Hiragino Sans\",\"Hiragino Kaku Gothic ProN\",\"Noto Sans JP\",\"Yu Gothic UI\",Meiryo,\"Pretendard Variable\",Pretendard,system-ui,sans-serif"
     }
   }
