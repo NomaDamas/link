@@ -36,7 +36,7 @@ https://link.nomadamas.org
 - 링크 페이지 전용 속성 `NomaDamas 링크`를 씁니다. 측정 ID는 `G-QG2DERJBRQ`이고, 블로그 속성(`G-ZTXBV8QP9G`)과 데이터가 섞이지 않습니다.
 - 태그는 `link.nomadamas.org`에서 열렸을 때만 불러옵니다. 임시 주소 `blog.nomadamas.org/link/`와 로컬 미리보기는 집계하지 않습니다.
 - 첫 화면 `/`에는 태그가 없습니다. 첫 화면이 원래 리퍼러를 `sessionStorage`의 `nd-ref`에 남기고, 옮겨 간 언어 페이지가 그 값을 `page_referrer`로 보냅니다. 그래서 유입 경로가 `link.nomadamas.org` 자신으로 덮이지 않습니다.
-- 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, threads, x, linkedin, instagram, youtube, tiktok, facebook)와 `link_url`로 볼 수 있습니다.
+- 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, blog, threads, x, linkedin, instagram, youtube, tiktok, facebook)와 `link_url`로 볼 수 있습니다.
 - GitHub로 나간 클릭은 맞춤 이벤트 `github_click`(`event_name` 같음 `click`, `link_domain` 같음 `github.com`)으로 따로 세고 주요 이벤트로 표시해 두었습니다. 블로그 속성과 같은 정의입니다.
 - 언어별로 보려면 페이지 경로 `/ko/`, `/en/`, `/cn/`, `/jp/`로 거르면 됩니다.
 
