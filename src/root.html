@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{title}}</title>
+<meta name="description" content="{{description}}">{{robots}}
+{{hreflang}}
+<meta name="theme-color" content="#07080D" media="(prefers-color-scheme:dark)">
+<meta name="theme-color" content="#F6F6F5" media="(prefers-color-scheme:light)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="NomaDamas">
+<meta property="og:url" content="https://link.nomadamas.org/">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{description}}">
+<meta property="og:image" content="https://avatars.githubusercontent.com/u/140389712?v=4">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@n0madamas">
+{{favicon}}
+<script>
+// 브라우저 언어를 보고 언어별 페이지로 옮긴다. 방문자가 직접 고른 언어가 있으면 그쪽이 먼저다.
+// 프로필 주소의 UTM이 사라지지 않게 쿼리와 해시를 그대로 붙인다.
+// 채널 주소(/instagram/ 등)는 그 채널의 UTM을 덧씌우고, Meta가 붙이는 utm_content나 fbclid 같은 나머지 쿼리는 남긴다.
+// 옮기면 리퍼러가 이 주소로 바뀌므로, 원래 리퍼러를 남겨 옮겨 간 페이지의 GA가 page_referrer로 쓰게 한다.
+// 주소는 상대 경로로 만들어 커스텀 도메인을 뺀 임시 주소(blog.nomadamas.org/link/)에서도 맞게 간다.
+(function () {
+  var langs = {{langs}};
+  var match = {{match}};
+  var utm = {{utm}};
+  var pick = null;
+  try {
+    var saved = localStorage.getItem("nd-lang");
+    if (langs.indexOf(saved) > -1) pick = saved;
+  } catch (e) {}
+  var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
+  for (var i = 0; !pick && i < list.length; i++) {
+    var code = String(list[i]).toLowerCase().split("-")[0];
+    if (Object.prototype.hasOwnProperty.call(match, code)) pick = match[code];
+  }
+  try { sessionStorage.setItem("nd-ref", document.referrer); } catch (e) {}
+  var search = location.search;
+  var keys = Object.keys(utm);
+  if (keys.length) {
+    var q = new URLSearchParams(search);
+    for (var j = 0; j < keys.length; j++) q.set(keys[j], utm[keys[j]]);
+    search = "?" + q.toString();
+  }
+  location.replace("{{base}}" + (pick || "{{fallback}}") + "/" + search + location.hash);
+})();
+</script>
+<style>
+:root{color-scheme:light dark}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:#F6F6F5;color:#0B0D13;
+  font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.9rem}
+@media (prefers-color-scheme:dark){body{background:#07080D;color:#EBEEF6}}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 22px;padding:24px}
+a{color:inherit;text-underline-offset:4px}
+</style>
+</head>
+<body>
+<noscript>
+  <nav aria-label="Language">
+    {{fallbackLinks}}
+  </nav>
+</noscript>
+</body>
+</html>
