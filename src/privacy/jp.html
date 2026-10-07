@@ -1,4 +1,4 @@
-    <p class="lede">link.nomadamas.org では、どのチャンネルから訪問があり、どのリンクが開かれたかを知るために Google Analytics 4 を使っています。この説明ページ自体は計測していません。</p>
+    <p class="lede">link.nomadamas.org では、どのチャンネルから訪問があり、どのリンクが開かれたかを知るために Google Analytics 4 を、訪問者がページのどこを見てどこを押したかを知るために Microsoft Clarity を使っています。この説明ページ自体は計測していません。</p>
 
     <section>
       <h2>収集する情報</h2>
@@ -7,17 +7,29 @@
         <li>開いたリンク（どのチャンネルに移動したか）</li>
         <li>流入元：直前のページのアドレスと、アクセスしたアドレスに付いた UTM などの値</li>
         <li>ブラウザと端末の種類、画面サイズ、言語設定、IP アドレスから推定した国と都市</li>
+        <li>ページ内の動き：スクロール、マウスの動き、クリックやタップした位置。Clarity はこれをもとにクリックマップ（ヒートマップ）と訪問の再生画面（セッション録画）を作ります。</li>
       </ul>
-      <p>氏名、メールアドレス、アカウントなどの情報は収集しません。収集したデータは、チャンネル別の訪問数とリンク別のクリック数を見るためだけに使います。</p>
+      <p>氏名、メールアドレス、アカウントなどの情報は収集しません。収集したデータは、チャンネル別の訪問数とリンク別のクリック数を数え、ページの使われ方を見て改善するためだけに使います。</p>
+    </section>
+
+    <section>
+      <h2>保存期間</h2>
+      <ul>
+        <li>Google Analytics：Cookie や訪問者の識別子に結び付いたデータを 14 か月間保存します。集計データをもとにした標準レポートの多くは、この期間の影響を受けません。</li>
+        <li>Clarity：訪問の再生データを 30 日間、ヒートマップとクリックのデータを 9 か月間保存します。保存用に印を付けた再生データも 9 か月後に削除されます。</li>
+      </ul>
     </section>
 
     <section>
       <h2>Cookie とブラウザの保存領域</h2>
       <ul>
         <li><code>_ga</code>、<code>_ga_QG2DERJBRQ</code>：Google Analytics が訪問者と訪問回数を区別するための Cookie です。最後の訪問から最長 2 年間残ります。</li>
+        <li><code>_clck</code>、<code>_clsk</code>：Clarity が同じ訪問者と同じ訪問のページをまとめるための Cookie です。<code>_clck</code> は最長 1 年、<code>_clsk</code> は 1 日残ります。</li>
+        <li><code>MUID</code>、<code>CLID</code> など：Clarity の読み込み時に Microsoft が自社のドメイン（clarity.ms、bing.com）に置く Cookie です。<code>MUID</code> は Microsoft のサイトを訪れるブラウザを区別し、広告とサイト分析に使われ、最長 390 日残ります。<code>CLID</code> は Clarity を使うサイトでこのブラウザを初めて見た時を記録し、最長 1 年残ります。一覧は <a href="https://learn.microsoft.com/ja-jp/clarity/setup-and-installation/clarity-cookies">Clarity の Cookie 一覧</a>にあります。</li>
         <li><code>nd-lang</code>、<code>nd-theme</code>：選んだ言語とテーマを記憶します。ブラウザ内にだけ残り、どこにも送信しません。</li>
-        <li><code>nd-ref</code>：最初の画面が流入元を一時的に保存し、言語ページが Google Analytics に渡した直後に削除します。タブを閉じても消えます。</li>
+        <li><code>nd-ref</code>：最初の画面が流入元を一時的に保存し、言語ページが Google Analytics と Clarity に渡した直後に削除します。Clarity にはサイト名だけを渡します。タブを閉じても消えます。</li>
       </ul>
+      <p>欧州経済領域、英国、スイスからアクセスした場合、Clarity は同意がない限り Cookie を使いません。このサイトは同意を求めないため、これらの地域の訪問者には Clarity の Cookie は残らず、ページごとに別々に記録されます。</p>
     </section>
 
     <section>
@@ -28,15 +40,18 @@
     <section>
       <h2>計測されたくない場合</h2>
       <ul>
-        <li>ブラウザの設定で Cookie をブロックまたは削除できます。</li>
-        <li><a href="https://tools.google.com/dlpage/gaoptout?hl=ja">Google アナリティクス オプトアウト アドオン</a>をインストールできます。</li>
-        <li>どちらの場合も、すべてのリンクはそのまま開けます。</li>
+        <li>ブラウザの設定で Cookie をブロックまたは削除すると、訪問同士が結び付けられなくなります。サードパーティ Cookie をブロックすると、Microsoft 側の Cookie も残りません。</li>
+        <li><a href="https://tools.google.com/dlpage/gaoptout?hl=ja">Google アナリティクス オプトアウト アドオン</a>をインストールすると、Google Analytics にデータが送られなくなります。</li>
+        <li>広告ブロッカーやブラウザのトラッキング防止機能で <code>clarity.ms</code> をブロックすると、Clarity にデータが送られなくなります。</li>
+        <li>Microsoft のパーソナライズド広告は <a href="https://go.microsoft.com/fwlink/?LinkID=286759">Microsoft のパーソナライズド広告の設定</a>でオフにできます。</li>
+        <li>どの方法でも、すべてのリンクはそのまま開けます。</li>
       </ul>
     </section>
 
     <section>
-      <h2>Google による情報の利用</h2>
+      <h2>Google と Microsoft による情報の利用</h2>
       <p><a href="https://policies.google.com/technologies/partner-sites?hl=ja">Google のサービスを使用するサイトやアプリから収集した情報の Google による使用</a>をご覧ください。</p>
+      <p>このサイトは Clarity を使っているため、Microsoft などの第三者も訪問者の個人データを収集することがあります。Microsoft は Microsoft Advertising を提供するためにこのデータを収集または受け取り、Clarity の提供、自社製品の改善、広告のためのユーザー プロファイル作成に使うことがあります。詳しくは <a href="https://www.microsoft.com/ja-jp/privacy/privacystatement">Microsoft プライバシー ステートメント</a>をご覧ください。</p>
     </section>
 
     <section>
