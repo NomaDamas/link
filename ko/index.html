@@ -195,6 +195,11 @@ a{color:inherit}
 /* ---------- footer ---------- */
 .foot{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--line);
   font-family:var(--f-mono);font-size:.72rem;color:var(--dim)}
+/* 좁은 화면에서는 안내 링크가 다음 줄로 내려가고, 테마 버튼은 오른쪽에 남는다 */
+.foot .by{display:flex;flex-wrap:wrap;align-items:center;gap:0 14px;min-width:0}
+.foot .by a{padding-block:6px;color:var(--dim);text-decoration:underline;text-decoration-color:var(--line);
+  text-underline-offset:3px;transition:color .16s,text-decoration-color .16s}
+@media (hover:hover){.foot .by a:hover{color:var(--sand);text-decoration-color:var(--sand)}}
 .tt{margin-left:auto;display:grid;place-items:center;width:40px;height:40px;flex:none;
   border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--dim);
   cursor:pointer;padding:0;transition:color .16s,border-color .16s}
@@ -286,7 +291,7 @@ a{color:inherit}
   </main>
 
   <footer class="foot rise" style="--i:13">
-    <span>Backed by Markr Inc.</span>
+    <span class="by"><span>Backed by Markr Inc.</span><a href="privacy/">방문 분석 안내</a></span>
     <button class="tt" type="button" aria-label="밝은 테마와 어두운 테마 전환">
       <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.5 6.5 4.9 4.9M19.1 19.1l-1.6-1.6M17.5 6.5l1.6-1.6M4.9 19.1l1.6-1.6"/></svg>
       <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"/></svg>
