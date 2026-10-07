@@ -1,0 +1,24 @@
+# 커밋된 페이지가 src/와 맞는지, 페이지가 지켜야 할 약속을 지키는지 본다.
+# GitHub Pages는 main 루트를 빌드 없이 그대로 배포하므로, 빌드를 빠뜨린 커밋은 여기서만 드러난다
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: 커밋된 페이지가 src/와 같은지
+        run: node build.mjs --check
+      - name: 페이지 약속
+        run: node --test test/site.test.mjs
