@@ -34,21 +34,32 @@ https://link.nomadamas.org
 
 ## 측정 (GA4)
 
-- 링크 페이지 전용 속성 `NomaDamas 링크`를 씁니다. 측정 ID는 `G-QG2DERJBRQ`이고, 블로그 속성(`G-ZTXBV8QP9G`)과 데이터가 섞이지 않습니다.
+- 링크 페이지 전용 속성 `NomaDamas 링크`를 씁니다. 측정 ID는 `G-QG2DERJBRQ`(`src/strings.json`의 `gaId`)이고, 블로그 속성(`G-ZTXBV8QP9G`)과 데이터가 섞이지 않습니다.
 - 태그는 `link.nomadamas.org`에서 열렸을 때만 불러옵니다. 임시 주소 `blog.nomadamas.org/link/`와 로컬 미리보기는 집계하지 않습니다.
 - 첫 화면 `/`에는 태그가 없습니다. 첫 화면이 원래 리퍼러를 `sessionStorage`의 `nd-ref`에 남기고, 옮겨 간 언어 페이지가 그 값을 `page_referrer`로 보냅니다. 그래서 유입 경로가 `link.nomadamas.org` 자신으로 덮이지 않습니다.
+- 데이터 보관 기간은 14개월입니다(기본값 2개월에서 바꿈).
 - 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, blog, threads, x, linkedin, instagram, youtube, tiktok, facebook)와 `link_url`로 볼 수 있습니다.
 - GitHub로 나간 클릭은 맞춤 이벤트 `github_click`(`event_name` 같음 `click`, `link_domain` 같음 `github.com`)으로 따로 세고 주요 이벤트로 표시해 두었습니다. 블로그 속성과 같은 정의입니다.
 - 언어별로 보려면 페이지 경로 `/ko/`, `/en/`, `/cn/`, `/jp/`로 거르면 됩니다.
 
+## 측정 (Clarity)
+
+- 히트맵과 방문 재생은 Microsoft Clarity 프로젝트 `NomaDamas 링크`가 맡습니다. 프로젝트 ID는 `ytxqbp0xlk`(`src/strings.json`의 `clarityId`)이고, 블로그 프로젝트(`ymsihkybmh`)와 따로 둡니다.
+- 불러오는 조건은 GA와 같습니다. `link.nomadamas.org`의 언어 페이지에서만 불러오고, 첫 화면과 채널 주소, 안내 페이지에는 없습니다.
+- 언어 페이지는 첫 화면에서 넘어오므로 Clarity가 보는 리퍼러는 첫 화면 주소입니다. 그래서 `nd-ref`의 원래 리퍼러에서 사이트 이름만 뽑아 맞춤 태그 `entry_referrer`로 남깁니다(리퍼러가 비었으면 `(direct)`). 대시보드 필터의 맞춤 태그에서 고를 수 있습니다. 채널 주소로 들어온 방문은 UTM이 주소에 남아 있어 따로 손댈 것이 없습니다.
+- 설정은 블로그 프로젝트와 같습니다. 쿠키 켜짐, 봇 감지 켜짐, 마스킹 "균형 잡힘"(기본)이고, 업계는 "기타"입니다.
+- 유럽경제지역, 영국, 스위스 방문자에게는 Clarity가 동의 신호를 기다리는 동의 모드가 기본으로 켜져 있습니다. 이 사이트는 동의 신호를 보내지 않으므로 그 지역 방문은 쿠키 없이 페이지마다 따로 기록됩니다.
+- 보관 기간은 Clarity가 정합니다. 방문 재생 30일, 히트맵과 클릭 9개월입니다.
+
 ## 방문 분석 안내
 
-GA4 약관은 사이트에 Google 애널리틱스를 쓴다는 사실과 쿠키 사용을 알리도록 요구합니다. 그래서 언어마다 안내 페이지를 둡니다.
+GA4 약관은 사이트에 Google 애널리틱스를 쓴다는 사실과 쿠키 사용을 알리도록 요구합니다. Clarity 약관은 Microsoft 같은 제3자가 방문자의 개인정보를 모을 수 있다는 것, Microsoft가 Microsoft Advertising 제공을 위해 그 정보를 모으거나 받는다는 것, 거부 방법, Microsoft 개인정보처리방침 링크를 안내하도록 요구합니다. 그래서 언어마다 안내 페이지를 둡니다.
 
 - 주소는 `/ko/privacy/`, `/en/privacy/`, `/cn/privacy/`, `/jp/privacy/`이고, 각 언어 페이지 하단 링크에서 들어갑니다. `/privacy/`는 첫 화면처럼 언어를 골라 해당 안내로 옮깁니다.
 - 틀은 `src/privacy.html`, 본문은 `src/privacy/<언어>.html`입니다. 제목, 하단 링크 문구, 갱신일 표기는 `src/strings.json`의 `privacyLabel`, `privacyTitle`, `privacyDescription`, `privacyUpdated`에, 기계가 읽는 갱신일은 `privacyDate`에 있습니다.
-- 안내 페이지에는 GA를 싣지 않고 `noindex`를 겁니다.
-- 측정 ID, 이벤트, 쿠키, 브라우저 저장 값(`nd-lang`, `nd-theme`, `nd-ref`) 가운데 하나라도 바뀌면 네 언어 본문과 갱신일을 함께 고칩니다. 블로그의 `/privacy/`처럼 실제로 켜진 도구만 적습니다.
+- 안내 페이지에는 GA와 Clarity를 싣지 않고 `noindex`를 겁니다.
+- 측정 ID, 프로젝트 ID, 이벤트, 쿠키, 보관 기간, 브라우저 저장 값(`nd-lang`, `nd-theme`, `nd-ref`) 가운데 하나라도 바뀌면 네 언어 본문과 갱신일을 함께 고칩니다. 실제로 켜진 도구만 적습니다.
+- 본문의 쿠키 만료 기간은 2026-10-07에 실제 브라우저로 잰 값입니다(`_clck` 365일, `_clsk` 1일, Microsoft 쪽 `MUID` 390일, `CLID` 365일). Clarity 쿠키 문서에는 만료 기간이 없습니다.
 
 ## 프로필에 거는 주소
 

@@ -28,7 +28,7 @@ const favicon = page.match(/<link rel="icon"[^>]*>/)[0];
 // 빠진 값이 있으면 빈칸으로 두지 않고 멈춘다
 function fill(tpl, vars, name) {
 	return tpl.replace(/\{\{(\w+)\}\}/g, (_, key) => {
-		if (!(key in vars)) throw new Error(`${name}: {{${key}}}에 넣을 값이 없습니다`);
+		if (vars[key] === undefined) throw new Error(`${name}: {{${key}}}에 넣을 값이 없습니다`);
 		return vars[key];
 	});
 }
@@ -53,6 +53,7 @@ for (const l of langs) {
 			...p,
 			dir: l,
 			gaId: cfg.gaId,
+			clarityId: cfg.clarityId,
 			hreflang,
 			ogLocaleAlternates: langs
 				.filter((x) => x !== l)

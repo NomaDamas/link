@@ -1,4 +1,4 @@
-    <p class="lede">link.nomadamas.org 使用 Google Analytics 4，了解访客来自哪些频道、打开了哪些链接。本说明页面不做统计。</p>
+    <p class="lede">link.nomadamas.org 使用 Google Analytics 4，了解访客来自哪些频道、打开了哪些链接；并使用 Microsoft Clarity，了解访客在页面上看了哪里、点了哪里。本说明页面不做统计。</p>
 
     <section>
       <h2>收集的信息</h2>
@@ -7,17 +7,29 @@
         <li>打开的链接（前往了哪个频道）</li>
         <li>来源：上一个页面的地址，以及访问地址中带有的 UTM 等参数</li>
         <li>浏览器和设备类型、屏幕尺寸、语言设置，以及根据 IP 地址推测的国家和城市</li>
+        <li>页面上的操作：滚动、鼠标移动，以及点击或轻触的位置。Clarity 用这些信息生成点击热图和访问回放（会话录制）。</li>
       </ul>
-      <p>我们不收集姓名、电子邮件、账号等信息。这些数据只用于统计各频道的访问量和各链接的点击量。</p>
+      <p>我们不收集姓名、电子邮件、账号等信息。这些数据只用于统计各频道的访问量和各链接的点击量，以及了解页面的使用情况以便改进。</p>
+    </section>
+
+    <section>
+      <h2>保存期限</h2>
+      <ul>
+        <li>Google Analytics：与 Cookie 和访客标识相关的数据保存 14 个月。基于汇总数据的大多数标准报告不受此期限影响。</li>
+        <li>Clarity：访问回放保存 30 天，热图和点击数据保存 9 个月。我们标记留存的访问回放也会在 9 个月后删除。</li>
+      </ul>
     </section>
 
     <section>
       <h2>Cookie 与浏览器存储</h2>
       <ul>
         <li><code>_ga</code>、<code>_ga_QG2DERJBRQ</code>：Google Analytics 用来区分访客和访问次数的 Cookie，自最后一次访问起最长保留两年。</li>
+        <li><code>_clck</code>、<code>_clsk</code>：Clarity 用来把页面归入同一访客和同一次访问的 Cookie。<code>_clck</code> 最长保留一年，<code>_clsk</code> 保留一天。</li>
+        <li><code>MUID</code>、<code>CLID</code> 等：加载 Clarity 时，Microsoft 在自己的域名（clarity.ms、bing.com）上设置的 Cookie。<code>MUID</code> 用于识别访问 Microsoft 网站的浏览器，用于广告和网站分析，最长保留 390 天；<code>CLID</code> 记录 Clarity 在任一使用 Clarity 的网站上首次见到此浏览器的时间，最长保留一年。完整列表见 <a href="https://learn.microsoft.com/zh-cn/clarity/setup-and-installation/clarity-cookies">Clarity Cookie 列表</a>。</li>
         <li><code>nd-lang</code>、<code>nd-theme</code>：记住您选择的语言和主题，只保存在您的浏览器中，不会发送到任何地方。</li>
-        <li><code>nd-ref</code>：首页会暂时保存您来自哪个页面，语言页面将其交给 Google Analytics 后立即删除。关闭标签页后也会消失。</li>
+        <li><code>nd-ref</code>：首页会暂时保存您来自哪个页面，语言页面将其交给 Google Analytics 和 Clarity 后立即删除。Clarity 只会收到网站名称。关闭标签页后也会消失。</li>
       </ul>
+      <p>如果您从欧洲经济区、英国或瑞士访问，Clarity 在未获得同意时不使用 Cookie。本站不征求同意，因此不会为这些地区的访客留下 Clarity Cookie，每次页面浏览都会单独记录。</p>
     </section>
 
     <section>
@@ -28,15 +40,18 @@
     <section>
       <h2>如果不希望被统计</h2>
       <ul>
-        <li>可以在浏览器设置中阻止或清除 Cookie。</li>
-        <li>可以安装 <a href="https://tools.google.com/dlpage/gaoptout?hl=zh-CN">Google Analytics 停用浏览器插件</a>。</li>
+        <li>在浏览器设置中阻止或清除 Cookie 后，您的多次访问不会被关联起来。阻止第三方 Cookie 后，Microsoft 的 Cookie 也不会保留。</li>
+        <li>安装 <a href="https://tools.google.com/dlpage/gaoptout?hl=zh-CN">Google Analytics 停用浏览器插件</a>后，数据不会发送到 Google Analytics。</li>
+        <li>用广告拦截器或浏览器的防跟踪功能阻止 <code>clarity.ms</code> 后，数据不会发送到 Clarity。</li>
+        <li>可以在 <a href="https://go.microsoft.com/fwlink/?LinkID=286759">Microsoft 个性化广告设置</a>中关闭 Microsoft 的个性化广告。</li>
         <li>无论哪种方式，所有链接都能照常打开。</li>
       </ul>
     </section>
 
     <section>
-      <h2>Google 如何使用这些信息</h2>
+      <h2>Google 和 Microsoft 如何使用这些信息</h2>
       <p>请参阅<a href="https://policies.google.com/technologies/partner-sites?hl=zh-CN">Google 如何使用来自使用其服务的网站或应用的信息</a>。</p>
+      <p>由于本站使用 Clarity，Microsoft 等第三方也可能收集访客的个人数据。Microsoft 为提供 Microsoft Advertising 而收集或接收这些数据，并可能将其用于提供 Clarity、改进其产品，以及建立用于广告的用户画像。详情请参阅 <a href="https://www.microsoft.com/zh-cn/privacy/privacystatement">Microsoft 隐私声明</a>。</p>
     </section>
 
     <section>

@@ -1,4 +1,4 @@
-    <p class="lede">link.nomadamas.org는 어느 채널에서 방문이 오고 어떤 링크가 열리는지 알기 위해 Google Analytics 4를 씁니다. 이 안내 페이지는 집계하지 않습니다.</p>
+    <p class="lede">link.nomadamas.org는 어느 채널에서 방문이 오고 어떤 링크가 열리는지 알기 위해 Google Analytics 4를, 방문자가 페이지의 어디를 보고 누르는지 알기 위해 Microsoft Clarity를 씁니다. 이 안내 페이지는 집계하지 않습니다.</p>
 
     <section>
       <h2>모으는 정보</h2>
@@ -7,17 +7,29 @@
         <li>누른 링크 (어느 채널로 나갔는지)</li>
         <li>들어온 경로: 직전 페이지 주소, 들어온 주소에 붙은 UTM 같은 값</li>
         <li>브라우저와 기기 종류, 화면 크기, 언어 설정, IP 주소로 추정한 국가와 도시</li>
+        <li>페이지 안의 움직임: 스크롤, 마우스 움직임, 누른 위치. Clarity는 이것으로 클릭 지도(히트맵)와 방문을 다시 보는 화면(세션 레코딩)을 만듭니다.</li>
       </ul>
-      <p>이름, 이메일, 계정 같은 정보는 모으지 않습니다. 모은 정보는 채널별 방문 수와 링크별 클릭 수를 보는 데만 씁니다.</p>
+      <p>이름, 이메일, 계정 같은 정보는 모으지 않습니다. 모은 정보는 채널별 방문 수와 링크별 클릭 수를 세고, 페이지가 어떻게 쓰이는지 보고 고치는 데만 씁니다.</p>
+    </section>
+
+    <section>
+      <h2>보관 기간</h2>
+      <ul>
+        <li>Google Analytics: 쿠키와 방문자 식별값에 묶인 기록은 14개월 동안 보관합니다. 합계로 만든 표준 보고서는 대부분 이 기간과 상관없이 남습니다.</li>
+        <li>Clarity: 방문 재생 기록은 30일, 히트맵과 클릭 기록은 9개월 동안 보관합니다. 따로 표시해 둔 방문 재생 기록도 9개월 뒤 지워집니다.</li>
+      </ul>
     </section>
 
     <section>
       <h2>쿠키와 브라우저 저장소</h2>
       <ul>
         <li><code>_ga</code>, <code>_ga_QG2DERJBRQ</code>: Google Analytics가 방문자와 방문 회차를 구분하는 쿠키입니다. 마지막 방문 뒤 최대 2년 동안 남습니다.</li>
+        <li><code>_clck</code>, <code>_clsk</code>: Clarity가 같은 방문자와 같은 방문의 페이지를 묶는 쿠키입니다. <code>_clck</code>는 최대 1년, <code>_clsk</code>는 하루 동안 남습니다.</li>
+        <li><code>MUID</code>, <code>CLID</code> 등: Clarity를 불러올 때 Microsoft가 자기 도메인(clarity.ms, bing.com)에 두는 쿠키입니다. <code>MUID</code>는 Microsoft 사이트를 방문하는 브라우저를 구분해 광고와 사이트 분석에 쓰이며 최대 390일, <code>CLID</code>는 Clarity를 쓰는 사이트들에서 이 브라우저를 처음 본 때를 기록하며 최대 1년 남습니다. 전체 목록은 <a href="https://learn.microsoft.com/ko-kr/clarity/setup-and-installation/clarity-cookies">Clarity 쿠키 목록</a>에 있습니다.</li>
         <li><code>nd-lang</code>, <code>nd-theme</code>: 직접 고른 언어와 테마를 기억합니다. 브라우저에만 남고 어디로도 보내지 않습니다.</li>
-        <li><code>nd-ref</code>: 첫 화면이 들어온 경로를 잠시 담아 두면, 언어 페이지가 Google Analytics에 넘긴 뒤 바로 지웁니다. 탭을 닫아도 사라집니다.</li>
+        <li><code>nd-ref</code>: 첫 화면이 들어온 경로를 잠시 담아 두면, 언어 페이지가 Google Analytics와 Clarity에 넘긴 뒤 바로 지웁니다. Clarity에는 사이트 이름만 넘깁니다. 탭을 닫아도 사라집니다.</li>
       </ul>
+      <p>유럽경제지역, 영국, 스위스에서 접속하면 Clarity는 동의 없이 쿠키를 쓰지 않습니다. 이 사이트는 동의를 따로 묻지 않으므로 이 지역 방문자에게는 Clarity 쿠키가 남지 않고, 방문은 페이지마다 따로 기록됩니다.</p>
     </section>
 
     <section>
@@ -28,15 +40,18 @@
     <section>
       <h2>집계를 원하지 않으면</h2>
       <ul>
-        <li>브라우저 설정에서 쿠키를 막거나 지울 수 있습니다.</li>
-        <li><a href="https://tools.google.com/dlpage/gaoptout?hl=ko">Google 애널리틱스 차단 브라우저 부가기능</a>을 설치할 수 있습니다.</li>
-        <li>어느 쪽이든 링크는 모두 그대로 열립니다.</li>
+        <li>브라우저 설정에서 쿠키를 막거나 지우면 방문끼리 이어지지 않습니다. 제3자 쿠키를 막으면 Microsoft 쪽 쿠키도 남지 않습니다.</li>
+        <li><a href="https://tools.google.com/dlpage/gaoptout?hl=ko">Google 애널리틱스 차단 브라우저 부가기능</a>을 설치하면 Google Analytics로 정보가 가지 않습니다.</li>
+        <li>광고 차단기나 브라우저의 추적 방지 기능으로 <code>clarity.ms</code>를 막으면 Clarity로 정보가 가지 않습니다.</li>
+        <li>Microsoft의 맞춤 광고는 <a href="https://go.microsoft.com/fwlink/?LinkID=286759">Microsoft 맞춤 광고 설정</a>에서 끌 수 있습니다.</li>
+        <li>어떤 방법을 써도 링크는 모두 그대로 열립니다.</li>
       </ul>
     </section>
 
     <section>
-      <h2>Google의 정보 사용</h2>
+      <h2>Google과 Microsoft의 정보 사용</h2>
       <p>Google이 이 정보를 어떻게 쓰는지는 <a href="https://policies.google.com/technologies/partner-sites?hl=ko">Google 서비스를 사용하는 사이트의 정보를 Google이 사용하는 방법</a>에서 볼 수 있습니다.</p>
+      <p>이 사이트는 Clarity를 쓰므로 Microsoft 같은 제3자도 방문자의 개인정보를 모을 수 있습니다. Microsoft는 Microsoft Advertising 제공을 위해 이 정보를 모으거나 받고, Clarity 제공, 자사 제품 개선, 광고용 사용자 프로필 작성에 쓸 수 있습니다. 자세한 내용은 <a href="https://www.microsoft.com/ko-kr/privacy/privacystatement">Microsoft 개인정보처리방침</a>에 있습니다.</p>
     </section>
 
     <section>
