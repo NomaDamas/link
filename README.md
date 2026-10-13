@@ -34,7 +34,9 @@ https://link.nomadamas.org
 
 ## 측정 (GA4)
 
-- 링크 페이지 전용 속성 `NomaDamas 링크`를 씁니다. 측정 ID는 `G-QG2DERJBRQ`(`src/strings.json`의 `gaId`)이고, 블로그 속성(`G-ZTXBV8QP9G`)과 데이터가 섞이지 않습니다.
+- 링크 페이지 전용 속성 `NomaDamas 링크`를 씁니다. 측정 ID는 `G-MFW4Z6SCDS`(`src/strings.json`의 `gaId`)이고, 블로그 속성(`G-DQ27HZKST3`)과 데이터가 섞이지 않습니다.
+- 2026-10-13에 이전 조직 Google 계정을 쓸 수 없게 되어, 그 계정 하나만 관리자였던 속성(`G-QG2DERJBRQ`)을 새 계정으로 다시 만들었습니다. 이전 데이터는 옮기지 못했습니다. 같은 일을 막으려고 관리자를 둘 이상 둡니다.
+- 스트림 설정은 로그인 없이 공개 태그로 확인할 수 있습니다. `curl -s "https://www.googletagmanager.com/gtag/js?id=<측정 ID>"`에 향상된 측정(`__ccd_em_*`), 맞춤 이벤트(`__ogt_event_create`), 주요 이벤트(`__ccd_conversion_marking`) 설정이 실려 나옵니다.
 - 태그는 `link.nomadamas.org`에서 열렸을 때만 불러옵니다. 임시 주소 `blog.nomadamas.org/link/`와 로컬 미리보기는 집계하지 않습니다.
 - 첫 화면 `/`에는 태그가 없습니다. 첫 화면이 원래 리퍼러를 `sessionStorage`의 `nd-ref`에 남기고, 옮겨 간 언어 페이지가 그 값을 `page_referrer`로 보냅니다. 그래서 유입 경로가 `link.nomadamas.org` 자신으로 덮이지 않습니다.
 - 데이터 보관 기간은 14개월입니다(기본값 2개월에서 바꿈).
