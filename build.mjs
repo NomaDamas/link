@@ -24,6 +24,8 @@ const privacy = withTokens("src/privacy.html");
 const root = read("src/root.html");
 const langs = Object.keys(cfg.pages);
 const favicon = page.match(/<link rel="icon"[^>]*>/)[0];
+// GA4 쿠키 이름은 측정 ID에서 나온다. 안내 본문의 {{gaCookie}} 자리에 넣어 측정 ID를 바꾸면 네 언어 안내도 따라 바뀐다
+const gaCookie = `_ga_${cfg.gaId.replace(/^G-/, "")}`;
 
 // 빠진 값이 있으면 빈칸으로 두지 않고 멈춘다
 function fill(tpl, vars, name) {
@@ -71,7 +73,7 @@ for (const l of langs) {
 			...p,
 			favicon,
 			privacyDate: cfg.privacyDate,
-			privacyBody: read(`src/privacy/${l}.html`).trimEnd(),
+			privacyBody: fill(read(`src/privacy/${l}.html`).trimEnd(), { gaCookie }, `src/privacy/${l}.html`),
 		},
 		`${l}/privacy/index.html`,
 	);
