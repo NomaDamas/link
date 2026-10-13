@@ -57,6 +57,11 @@ test("언어 페이지는 서로를 hreflang으로 가리키고, 하단에서 �
 	}
 });
 
+test("안내 페이지의 GA 쿠키 이름은 지금 쓰는 측정 ID와 맞다", () => {
+	const cookie = `<code>_ga_${cfg.gaId.replace(/^G-/, "")}</code>`;
+	for (const rel of privacyPages) assert.ok(read(rel).includes(cookie), `${rel}: ${cookie} 없음`);
+});
+
 test("안내 페이지는 갱신일을 적고, 바깥 링크는 모두 https다", () => {
 	for (const l of langs) {
 		const html = read(`${l}/privacy/index.html`);

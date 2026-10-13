@@ -59,6 +59,7 @@ GA4 약관은 사이트에 Google 애널리틱스를 쓴다는 사실과 쿠키 
 - 틀은 `src/privacy.html`, 본문은 `src/privacy/<언어>.html`입니다. 제목, 하단 링크 문구, 갱신일 표기는 `src/strings.json`의 `privacyLabel`, `privacyTitle`, `privacyDescription`, `privacyUpdated`에, 기계가 읽는 갱신일은 `privacyDate`에 있습니다.
 - 안내 페이지에는 GA와 Clarity를 싣지 않고 `noindex`를 겁니다.
 - 측정 ID, 프로젝트 ID, 이벤트, 쿠키, 보관 기간, 브라우저 저장 값(`nd-lang`, `nd-theme`, `nd-ref`) 가운데 하나라도 바뀌면 네 언어 본문과 갱신일을 함께 고칩니다. 실제로 켜진 도구만 적습니다.
+- GA 쿠키 이름(`_ga_` 뒤에 측정 ID의 `G-` 뒷부분)은 빌드가 `gaId`에서 만들어 본문의 `{{gaCookie}}` 자리에 넣습니다. 측정 ID만 바꿀 때는 본문은 그대로 두고 갱신일만 고치면 됩니다.
 - 본문의 쿠키 만료 기간은 2026-10-07에 실제 브라우저로 잰 값입니다(`_clck` 365일, `_clsk` 1일, Microsoft 쪽 `MUID` 390일, `CLID` 365일). Clarity 쿠키 문서에는 만료 기간이 없습니다.
 
 ## 프로필에 거는 주소
@@ -83,5 +84,5 @@ GA4 약관은 사이트에 Google 애널리틱스를 쓴다는 사실과 쿠키 
 ## 검사
 
 - `node build.mjs --check`는 커밋된 페이지가 `src/`와 같은지 봅니다.
-- `node --test test/site.test.mjs`는 브라우저 없이 페이지가 지켜야 할 약속을 봅니다. 채워지지 않은 자리, 분석 도구가 언어 페이지에서 실제 주소일 때만 불리는지, 안내 페이지와 채널 주소의 `noindex`, hreflang, 상대 링크가 실제 파일을 가리키는지, 채널 주소의 `utm_source`를 확인합니다. 레이아웃이나 클릭 같은 브라우저 동작은 보지 않습니다.
+- `node --test test/site.test.mjs`는 브라우저 없이 페이지가 지켜야 할 약속을 봅니다. 채워지지 않은 자리, 분석 도구가 언어 페이지에서 실제 주소일 때만 불리는지, 안내 페이지의 GA 쿠키 이름이 측정 ID와 맞는지, 안내 페이지와 채널 주소의 `noindex`, hreflang, 상대 링크가 실제 파일을 가리키는지, 채널 주소의 `utm_source`를 확인합니다. 레이아웃이나 클릭 같은 브라우저 동작은 보지 않습니다.
 - PR과 main 푸시마다 GitHub Actions(`.github/workflows/check.yml`)가 둘을 돌립니다. GitHub Pages는 이 검사와 상관없이 main을 그대로 배포하므로, main에서 실패하면 바로 고칩니다.
