@@ -10,7 +10,7 @@
   },
   "profiles": {
     "utm": { "utm_medium": "social", "utm_campaign": "profile" },
-    "sources": ["threads", "x", "linkedin", "instagram", "youtube", "tiktok", "facebook"]
+    "sources": ["threads", "x", "linkedin", "instagram", "instagram-korea", "youtube", "youtube-global", "tiktok", "facebook"]
   },
   "pages": {
     "ko": {

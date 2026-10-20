@@ -77,13 +77,16 @@ GA4 약관은 사이트에 Google 애널리틱스를 쓴다는 사실과 쿠키 
 | Threads | `https://link.nomadamas.org/threads` |
 | X | `https://link.nomadamas.org/x` |
 | LinkedIn | `https://link.nomadamas.org/linkedin` |
-| Instagram | `https://link.nomadamas.org/instagram` |
-| YouTube | `https://link.nomadamas.org/youtube` |
+| Instagram 영어 `@nomadamas_global` | `https://link.nomadamas.org/instagram` |
+| Instagram 한국어 `@nomadamas_korea` | `https://link.nomadamas.org/instagram-korea` |
+| YouTube 한국어 `@nomadamas_korea` | `https://link.nomadamas.org/youtube` |
+| YouTube 영어 `@nomadamas_global` | `https://link.nomadamas.org/youtube-global` |
 | TikTok | `https://link.nomadamas.org/tiktok` |
 | Facebook | `https://link.nomadamas.org/facebook` |
 
 - 채널 주소는 첫 화면과 똑같이 언어를 골라 옮기면서 `utm_source=<폴더 이름>&utm_medium=social&utm_campaign=profile`을 붙입니다. 들어올 때 붙어 있던 다른 쿼리(Meta가 덧붙이는 `utm_content`, `fbclid` 등)는 그대로 넘깁니다.
 - 채널 주소는 검색에 잡히지 않게 `noindex`를 겁니다.
+- YouTube와 Instagram은 언어별로 계정이 둘이라 주소도 둘입니다. 폴더 이름은 페이지의 `link_id`와 같게 맞췄습니다(`instagram`은 영어, `youtube`는 한국어 계정).
 - 채널을 더하려면 `src/strings.json`의 `profiles.sources`에 이름을 넣고 다시 빌드합니다. 언어 폴더와 같은 이름이면 빌드가 멈춥니다.
 - 예전 형식인 `https://link.nomadamas.org/?utm_source=<채널>&utm_medium=social&utm_campaign=profile`도 그대로 동작합니다.
 
