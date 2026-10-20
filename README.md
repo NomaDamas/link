@@ -29,6 +29,9 @@ https://link.nomadamas.org
 ## 링크 고치기
 
 - `src/page.html`의 `<ul class="links">` 안에서 `<a>` 하나가 채널 하나입니다. 고친 뒤 다시 빌드합니다.
+- 목록은 두 칸 bento입니다. GitHub와 블로그처럼 한 줄을 다 쓰는 칸은 `<li class="wide">`, 반 칸 타일은 `<a class="lk tile">`입니다. 타일 수가 홀수면 마지막 타일에 `wide`를 붙여 빈칸을 남기지 않습니다.
+- YouTube와 Instagram은 언어별로 계정이 둘이라 한국어 계정을 왼쪽, 영어 계정을 오른쪽에 두고 이름 옆에 `<span class="lang">KO</span>`, `EN`을 붙입니다.
+- 순서를 바꾸면 `style="--i:N"`(나타나는 순서)도 위에서부터 다시 매기고, 푸터는 마지막 링크 다음 번호로 둡니다.
 - 같은 주소가 `<head>`의 JSON-LD `sameAs`에도 있으니 함께 고치면 됩니다.
 - `<a>`의 `id`는 GA에서 링크를 가르는 값이라, 기존 링크의 `id`는 바꾸지 않는 편이 좋습니다.
 
@@ -40,7 +43,7 @@ https://link.nomadamas.org
 - 태그는 `link.nomadamas.org`에서 열렸을 때만 불러옵니다. 임시 주소 `blog.nomadamas.org/link/`와 로컬 미리보기는 집계하지 않습니다.
 - 첫 화면 `/`에는 태그가 없습니다. 첫 화면이 원래 리퍼러를 `sessionStorage`의 `nd-ref`에 남기고, 옮겨 간 언어 페이지가 그 값을 `page_referrer`로 보냅니다. 그래서 유입 경로가 `link.nomadamas.org` 자신으로 덮이지 않습니다.
 - 데이터 보관 기간은 14개월입니다(기본값 2개월에서 바꿈).
-- 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, blog, threads, x, linkedin, instagram, youtube, youtube-global, tiktok, facebook)와 `link_url`로 볼 수 있습니다.
+- 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, blog, threads, x, instagram-korea, instagram, youtube, youtube-global, linkedin, tiktok, facebook)와 `link_url`로 볼 수 있습니다. 계정을 이어서 세려고 `instagram`은 영어 `@nomadamas_global`(옛 `@n0madamas`), `youtube`는 한국어 `@nomadamas_korea`를 가리킵니다.
 - GitHub로 나간 클릭은 맞춤 이벤트 `github_click`(`event_name` 같음 `click`, `link_domain` 같음 `github.com`)으로 따로 세고 주요 이벤트로 표시해 두었습니다. 블로그 속성과 같은 정의입니다.
 - 언어별로 보려면 페이지 경로 `/ko/`, `/en/`, `/cn/`, `/jp/`로 거르면 됩니다.
 
