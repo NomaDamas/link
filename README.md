@@ -53,7 +53,7 @@ https://link.nomadamas.org
 - 태그는 `link.nomadamas.org`에서 열렸을 때만 불러옵니다. 임시 주소 `blog.nomadamas.org/link/`와 로컬 미리보기는 집계하지 않습니다.
 - 첫 화면 `/`에는 태그가 없습니다. 첫 화면이 원래 리퍼러를 `sessionStorage`의 `nd-ref`에 남기고, 옮겨 간 언어 페이지가 그 값을 `page_referrer`로 보냅니다. 그래서 유입 경로가 `link.nomadamas.org` 자신으로 덮이지 않습니다.
 - 데이터 보관 기간은 14개월입니다(기본값 2개월에서 바꿈).
-- 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, gh-autorag, gh-k-skill, gh-cozyclay, blog, threads, x, instagram-korea, instagram, youtube, youtube-global, linkedin, tiktok, facebook)와 `link_url`로 볼 수 있습니다. 계정을 이어서 세려고 `instagram`은 영어 `@nomadamas_global`(옛 `@n0madamas`), `youtube`는 한국어 `@nomadamas_korea`를 가리킵니다.
+- 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, gh-autorag, gh-k-skill, gh-cozyclay, blog, threads, x, instagram-korea, instagram, youtube, youtube-global, linkedin, tiktok, facebook)와 `link_url`로 볼 수 있습니다. 계정을 이어서 세려고 `instagram`은 영어 `@nomadamas_global`(옛 `@n0madamas`), `threads`는 `@nomadamas_korea`(2026-10-21에 `@n0madamas`에서 핸들만 바뀐 같은 계정), `youtube`는 한국어 `@nomadamas_korea`를 가리킵니다.
 - GitHub로 나간 클릭은 맞춤 이벤트 `github_click`(`event_name` 같음 `click`, `link_domain` 같음 `github.com`)으로 따로 세고 주요 이벤트로 표시해 두었습니다. 블로그 속성과 같은 정의입니다. 조직 링크와 저장소 줄 클릭이 모두 여기에 들어갑니다.
 - 저장소 줄로 나간 방문은 GitHub 쪽에서도 `gh api repos/NomaDamas/<저장소>/traffic/popular/referrers`의 `link.nomadamas.org`로 볼 수 있습니다. 최근 14일, 상위 10개 사이트만 나오므로 방문이 적으면 목록에 오르지 않습니다. AutoRAG는 `Marker-Inc-Korea` 저장소라 읽기 권한만 있고, 이 API가 403을 돌려줍니다. AutoRAG로 나간 클릭은 GA로만 셉니다.
 - 언어별로 보려면 페이지 경로 `/ko/`, `/en/`, `/cn/`, `/jp/`로 거르면 됩니다.
