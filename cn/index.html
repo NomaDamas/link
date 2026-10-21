@@ -222,6 +222,29 @@ a{color:inherit}
 .lk .lang{display:inline-block;margin-left:6px;padding:1px 6px;border:1px solid var(--line);border-radius:999px;
   font-size:.62rem;font-weight:400;letter-spacing:.04em;vertical-align:2px;color:var(--dim)}
 
+/* GitHub 칸. 조직 링크 아래에 대표 저장소 줄을 붙여 저장소로 바로 들어가게 한다. 테두리와 그림자는 칸 전체가 진다 */
+.gh{border:1px solid var(--line);border-radius:14px;background:var(--surface);box-shadow:var(--shadow);overflow:hidden;
+  transition:border-color .22s var(--ease)}
+.gh>.lk{border:0;border-radius:0;background:none;box-shadow:none}
+.repos{list-style:none;margin:0;padding:0}
+.repo{display:flex;align-items:center;gap:12px;padding:11px 18px;border-top:1px solid var(--line);
+  color:var(--text);text-decoration:none;-webkit-tap-highlight-color:transparent;transition:background-color .2s var(--ease)}
+.repo .t{flex:1;min-width:0;display:grid;line-height:1.4}
+.repo b{font-family:var(--f-mono);font-weight:700;font-size:.86rem;letter-spacing:-.02em;transition:color .2s var(--ease)}
+.repo em{font-style:normal;font-size:.78rem;color:var(--dim)}
+.repo .star{display:flex;align-items:center;gap:5px;flex:none;font-family:var(--f-mono);font-size:.78rem;color:var(--dim)}
+.repo .star svg{width:13px;height:13px;fill:var(--sand)}
+/* 칸 안쪽은 잘리므로 포커스 표시를 안으로 들인다 */
+.gh>.lk:focus-visible,.repo:focus-visible{outline-offset:-3px;border-radius:12px}
+@media (hover:hover){
+  .gh:hover{border-color:var(--sand)}
+  .gh>.lk:hover{transform:none}
+  .repo:hover{background:var(--void)}
+  .repo:hover b{color:var(--sand)}
+}
+.gh>.lk:active{transform:none}
+.repo:active{background:var(--void)}
+
 /* ---------- footer ---------- */
 .foot{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--line);
   font-family:var(--f-mono);font-size:.72rem;color:var(--dim)}
@@ -290,9 +313,14 @@ a{color:inherit}
   <main>
     <h2 class="vh">频道</h2>
     <ul class="links" role="list">
-      <li class="wide"><a class="lk rise" style="--i:4" id="github" href="https://github.com/NomaDamas" rel="me">
+      <li class="wide"><div class="gh rise" style="--i:4"><a class="lk" id="github" href="https://github.com/NomaDamas" rel="me">
         <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        <span class="t"><b>GitHub</b><em>NomaDamas</em></span><svg class="go" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></a></li>
+        <span class="t"><b>GitHub</b><em>NomaDamas</em></span><svg class="go" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></a>
+        <ul class="repos" role="list">
+          <li><a class="repo" id="gh-autorag" href="https://github.com/Marker-Inc-Korea/AutoRAG"><span class="t"><b>AutoRAG</b><em>电脑里的 AI 图书管理员</em></span><span class="star"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg><span class="vh">GitHub 星标</span><span data-stars="Marker-Inc-Korea/AutoRAG">5.2k</span></span></a></li>
+          <li><a class="repo" id="gh-cozyclay" href="https://github.com/NomaDamas/CozyClay"><span class="t"><b>CozyClay</b><em>在浏览器里预先编排 AI 视频镜头</em></span><span class="star"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg><span class="vh">GitHub 星标</span><span data-stars="NomaDamas/CozyClay">880</span></span></a></li>
+          <li><a class="repo" id="gh-k-skill" href="https://github.com/NomaDamas/k-skill"><span class="t"><b>k-skill</b><em>为韩国生活打造的智能体技能合集</em></span><span class="star"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg><span class="vh">GitHub 星标</span><span data-stars="NomaDamas/k-skill">8k</span></span></a></li>
+        </ul></div></li>
       <li class="wide"><a class="lk rise" style="--i:5" id="blog" href="https://blog.nomadamas.org/" rel="me">
         <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M6 2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm0 2.2v15.6h12V4.2H6zM8 7h8v2H8zm0 4h8v2H8zm0 4h5v2H8z"/></svg>
         <span class="t"><b>Blog</b><em>blog.nomadamas.org</em></span><svg class="go" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9 9 3M4 3h5v5"/></svg></a></li>
@@ -356,6 +384,16 @@ document.addEventListener("click", function (e) {
 });
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && picker.open) { picker.open = false; picker.querySelector("summary").focus(); }
+});
+// 저장소 별 수는 빌드 때 값을 먼저 보여 주고, GitHub API가 답하면 지금 값으로 바꾼다. 실패하면 빌드 때 값이 남는다
+document.querySelectorAll("[data-stars]").forEach(function (el) {
+  fetch("https://api.github.com/repos/" + el.dataset.stars)
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (d) {
+      var n = d && d.stargazers_count;
+      if (typeof n === "number") el.textContent = n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, "") + "k" : String(n);
+    })
+    .catch(function () {});
 });
 </script>
 </body>
