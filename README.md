@@ -10,6 +10,7 @@ https://link.nomadamas.org
 - 색과 글꼴 토큰은 `src/tokens.css` 한 곳에 있고, 빌드가 링크 페이지와 안내 페이지 틀의 `{{tokens}}` 자리에 넣습니다. 색을 바꿀 때는 이 파일만 고치면 됩니다.
 - `node build.mjs`가 이것들을 합쳐 언어 폴더 `ko/`, `en/`, `cn/`, `jp/`와 그 아래 방문 분석 안내(`privacy/`), 채널 폴더(`threads/`, `x/` 등, 아래 "프로필에 거는 주소"), 첫 화면 `index.html`, 안내 주소 `privacy/index.html`을 만듭니다. Node만 있으면 되고 설치할 패키지는 없습니다.
 - 만든 파일도 커밋합니다. GitHub Pages가 빌드 단계 없이 `main` 브랜치 루트를 그대로 배포하기 때문입니다.
+- 머지하면 보통 1분 안에 배포가 시작됩니다. 몇 분이 지나도 `gh api repos/NomaDamas/link/pages/builds/latest`의 `commit`이 그대로면, GitHub 장애로 웹훅이 밀렸을 수 있습니다(githubstatus.com에서 확인). 그때는 `gh api -X POST repos/NomaDamas/link/pages/builds`로 배포를 직접 겁니다. 이 저장소는 Actions가 아니라 브랜치에서 바로 배포하는 방식이라, 이 요청이 main의 최신 커밋을 배포합니다.
 - 만든 파일을 직접 고치면 다음 빌드에서 덮어써집니다. `src/`를 고치고 `node build.mjs`를 돌린 뒤, `node build.mjs --check`가 통과하는지 보면 됩니다.
 - 커스텀 도메인은 Pages 설정에서 걸며, 걸면 GitHub이 `CNAME` 파일을 main에 커밋합니다. `.nojekyll`은 Jekyll 처리를 끄는 빈 파일입니다.
 - DNS는 Cloudflare에서 `link` CNAME을 `nomadamas.github.io`로 두고 프록시는 끕니다. blog.nomadamas.org와 같은 방식입니다.
