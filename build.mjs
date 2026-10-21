@@ -75,7 +75,7 @@ for (const l of langs) {
 				.map((x) => `<meta property="og:locale:alternate" content="${cfg.pages[x].ogLocale}">`)
 				.join("\n"),
 			langCode: l.toUpperCase(),
-			langNav: langs.map((x) => langLink(x, "../", x === l)).join("\n      "),
+			langNav: langs.map((x) => langLink(x, "../", x === l)).join("\n        "),
 			repoList: repoList(l),
 		},
 		`${l}/index.html`,

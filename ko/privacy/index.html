@@ -91,10 +91,12 @@ code{font-family:var(--f-mono);font-size:.82em;padding:.08em .38em;border:1px so
 
 .foot{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--line);
   font-family:var(--f-mono);font-size:.72rem;color:var(--dim)}
-.tt{margin-left:auto;display:grid;place-items:center;width:40px;height:40px;flex:none;
+/* 링크 페이지처럼 테마 버튼은 오른쪽 위에 둔다 */
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.tt{display:grid;place-items:center;width:32px;height:32px;flex:none;
   border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--dim);
-  cursor:pointer;padding:0;transition:color .16s,border-color .16s}
-.tt svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;
+  cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent;transition:color .16s,border-color .16s}
+.tt svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;
   stroke-linecap:round;stroke-linejoin:round}
 @media (hover:hover){.tt:hover{color:var(--sand);border-color:var(--sand)}}
 .tt .moon{display:none}
@@ -112,7 +114,13 @@ code{font-family:var(--f-mono);font-size:.82em;padding:.08em .38em;border:1px so
 <body>
 <div class="wrap">
   <header>
-    <a class="back" href="../"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5"/></svg>NomaDamas</a>
+    <div class="bar">
+      <a class="back" href="../"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M7.5 2.5 4 6l3.5 3.5"/></svg>NomaDamas</a>
+      <button class="tt" type="button" aria-label="밝은 테마와 어두운 테마 전환">
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.5 6.5 4.9 4.9M19.1 19.1l-1.6-1.6M17.5 6.5l1.6-1.6M4.9 19.1l1.6-1.6"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"/></svg>
+      </button>
+    </div>
     <h1>방문 분석 안내</h1>
     <p class="meta"><time datetime="2026-10-21">2026년 10월 21일 갱신</time></p>
   </header>
@@ -182,10 +190,6 @@ code{font-family:var(--f-mono);font-size:.82em;padding:.08em .38em;border:1px so
 
   <footer class="foot">
     <span>Backed by Markr Inc.</span>
-    <button class="tt" type="button" aria-label="밝은 테마와 어두운 테마 전환">
-      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.5 6.5 4.9 4.9M19.1 19.1l-1.6-1.6M17.5 6.5l1.6-1.6M4.9 19.1l1.6-1.6"/></svg>
-      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"/></svg>
-    </button>
   </footer>
 </div>
 

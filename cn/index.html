@@ -159,9 +159,25 @@ a{color:inherit}
 
 .sub{margin:14px 0 0;font-size:.885rem;line-height:1.75;color:var(--dim)}
 
-/* ---------- languages ---------- */
-/* 첫 화면 위쪽 여백에 띄운 작은 토글이다. 누르면 언어 목록이 펼쳐지고, details라 JS가 없어도 열린다 */
-.langs{position:absolute;z-index:5;top:clamp(14px,3.2vh,30px);right:max(20px,env(safe-area-inset-right,0px))}
+/* ---------- top: theme, languages ---------- */
+/* 첫 화면 오른쪽 위 여백에 테마 버튼과 언어 토글을 나란히 띄운다. 둘 다 높이 32px로 맞춘다 */
+.top{position:absolute;z-index:5;top:clamp(14px,3.2vh,30px);right:max(20px,env(safe-area-inset-right,0px));
+  display:flex;align-items:center;gap:8px}
+.tt{display:grid;place-items:center;width:32px;height:32px;flex:none;
+  border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--dim);
+  cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent;transition:color .16s,border-color .16s}
+.tt svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+@media (hover:hover){.tt:hover{color:var(--sand);border-color:var(--sand)}}
+.tt .moon{display:none}
+:root[data-theme="dark"] .tt .moon,
+:root[data-theme="light"] .tt .sun{display:block}
+:root[data-theme="dark"] .tt .sun,
+:root[data-theme="light"] .tt .moon{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tt .sun{display:none}
+  :root:not([data-theme="light"]) .tt .moon{display:block}}
+/* 누르면 언어 목록이 펼쳐지고, details라 JS가 없어도 열린다 */
+.langs{position:relative}
 .langs summary{list-style:none;display:flex;align-items:center;gap:6px;height:32px;padding:0 10px;
   border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--dim);cursor:pointer;
   font-family:var(--f-mono);font-size:.74rem;line-height:1;-webkit-tap-highlight-color:transparent;
@@ -248,24 +264,11 @@ a{color:inherit}
 /* ---------- footer ---------- */
 .foot{display:flex;align-items:center;gap:12px;padding-top:18px;border-top:1px solid var(--line);
   font-family:var(--f-mono);font-size:.72rem;color:var(--dim)}
-/* 좁은 화면에서는 안내 링크가 다음 줄로 내려가고, 테마 버튼은 오른쪽에 남는다 */
+/* 좁은 화면에서는 안내 링크가 다음 줄로 내려간다 */
 .foot .by{display:flex;flex-wrap:wrap;align-items:center;gap:0 14px;min-width:0}
 .foot .by a{padding-block:6px;color:var(--dim);text-decoration:underline;text-decoration-color:var(--line);
   text-underline-offset:3px;transition:color .16s,text-decoration-color .16s}
 @media (hover:hover){.foot .by a:hover{color:var(--sand);text-decoration-color:var(--sand)}}
-.tt{margin-left:auto;display:grid;place-items:center;width:40px;height:40px;flex:none;
-  border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--dim);
-  cursor:pointer;padding:0;transition:color .16s,border-color .16s}
-.tt svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.6;
-  stroke-linecap:round;stroke-linejoin:round}
-@media (hover:hover){.tt:hover{color:var(--sand);border-color:var(--sand)}}
-.tt .moon{display:none}
-:root[data-theme="dark"] .tt .moon,
-:root[data-theme="light"] .tt .sun{display:block}
-:root[data-theme="dark"] .tt .sun,
-:root[data-theme="light"] .tt .moon{display:none}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tt .sun{display:none}
-  :root:not([data-theme="light"]) .tt .moon{display:block}}
 
 /* ---------- motion ---------- */
 /* backwards라 애니메이션이 끝나면 원래 스타일로 돌아가, 호버의 transform을 가리지 않는다 */
@@ -289,15 +292,21 @@ a{color:inherit}
 <div class="grain" aria-hidden="true"></div>
 
 <div class="wrap">
-  <details class="langs">
-    <summary><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z"/></svg><span aria-hidden="true">CN</span><span class="vh">语言: 中文</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></summary>
-    <nav aria-label="语言">
-      <a href="../ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a>
-      <a href="../en/" hreflang="en" lang="en" data-lang="en">English</a>
-      <a href="../cn/" hreflang="zh-Hans" lang="zh-Hans" data-lang="cn" aria-current="page">中文</a>
-      <a href="../jp/" hreflang="ja" lang="ja" data-lang="jp">日本語</a>
-    </nav>
-  </details>
+  <div class="top">
+    <button class="tt" type="button" aria-label="切换浅色与深色主题">
+      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.5 6.5 4.9 4.9M19.1 19.1l-1.6-1.6M17.5 6.5l1.6-1.6M4.9 19.1l1.6-1.6"/></svg>
+      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"/></svg>
+    </button>
+    <details class="langs">
+      <summary><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9s1.3-6.4 3.8-9z"/></svg><span aria-hidden="true">CN</span><span class="vh">语言: 中文</span><svg class="chev" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5"/></svg></summary>
+      <nav aria-label="语言">
+        <a href="../ko/" hreflang="ko" lang="ko" data-lang="ko">한국어</a>
+        <a href="../en/" hreflang="en" lang="en" data-lang="en">English</a>
+        <a href="../cn/" hreflang="zh-Hans" lang="zh-Hans" data-lang="cn" aria-current="page">中文</a>
+        <a href="../jp/" hreflang="ja" lang="ja" data-lang="jp">日本語</a>
+      </nav>
+    </details>
+  </div>
   <header>
     <div class="mark rise" style="--i:0">
       <svg class="camel" viewBox="138 222 656 443" aria-hidden="true">
@@ -356,10 +365,6 @@ a{color:inherit}
 
   <footer class="foot rise" style="--i:15">
     <span class="by"><span>Backed by Markr Inc.</span><a href="privacy/">隐私说明</a></span>
-    <button class="tt" type="button" aria-label="切换浅色与深色主题">
-      <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M4.2 12H2M22 12h-2.2M6.5 6.5 4.9 4.9M19.1 19.1l-1.6-1.6M17.5 6.5l1.6-1.6M4.9 19.1l1.6-1.6"/></svg>
-      <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.2A8.2 8.2 0 0 1 9.8 4a8.4 8.4 0 1 0 10.2 10.2Z"/></svg>
-    </button>
   </footer>
 </div>
 
