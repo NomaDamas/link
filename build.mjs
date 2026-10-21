@@ -55,7 +55,7 @@ const repoList = (l) =>
 		.map((name) => {
 			const r = cfg.repos[name];
 			if (!r) throw new Error(`${l}: featured의 ${name}이 repos에 없습니다`);
-			return `<li><a class="repo" id="gh-${name.toLowerCase()}" href="https://github.com/NomaDamas/${name}"><span class="t"><b>${name}</b><em>${r.desc[l]}</em></span><span class="star">${STAR}<span class="vh">${cfg.pages[l].starsLabel}</span><span data-stars="NomaDamas/${name}">${starText(r.stars)}</span></span></a></li>`;
+			return `<li><a class="repo" id="gh-${name.toLowerCase()}" href="https://github.com/${r.repo}"><span class="t"><b>${name}</b><em>${r.desc[l]}</em></span><span class="star">${STAR}<span class="vh">${cfg.pages[l].starsLabel}</span><span data-stars="${r.repo}">${starText(r.stars)}</span></span></a></li>`;
 		})
 		.join("\n          ");
 
