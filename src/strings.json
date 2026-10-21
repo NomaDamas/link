@@ -1,7 +1,7 @@
 {
   "gaId": "G-MFW4Z6SCDS",
   "clarityId": "ytxqbp0xlk",
-  "privacyDate": "2026-10-13",
+  "privacyDate": "2026-10-21",
   "fallback": "en",
   "match": { "ko": "ko", "en": "en", "zh": "cn", "ja": "jp" },
   "root": {
@@ -11,6 +11,20 @@
   "profiles": {
     "utm": { "utm_medium": "social", "utm_campaign": "profile" },
     "sources": ["threads", "x", "linkedin", "instagram", "instagram-korea", "youtube", "youtube-global", "tiktok", "facebook"]
+  },
+  "repos": {
+    "k-skill": {
+      "stars": 8007,
+      "desc": { "ko": "한국인을 위한 에이전트 스킬 모음", "en": "Agent skills built for life in Korea", "cn": "为韩国生活打造的智能体技能合集", "jp": "韓国向けのエージェントスキル集" }
+    },
+    "slides-grab": {
+      "stars": 1221,
+      "desc": { "ko": "Claude Code로 슬라이드 만들기", "en": "Make slides in Claude Code", "cn": "用 Claude Code 做幻灯片", "jp": "Claude Code でスライド作成" }
+    },
+    "CozyClay": {
+      "stars": 880,
+      "desc": { "ko": "AI 영상 장면을 브라우저에서 미리 짜기", "en": "Plan AI video shots in the browser", "cn": "在浏览器里预先编排 AI 视频镜头", "jp": "ブラウザで AI 動画のプリビズ" }
+    }
   },
   "pages": {
     "ko": {
@@ -22,12 +36,14 @@
       "ogDescription": "서울의 AI 오픈소스 해커하우스. 재밌는 걸 만들어 공개합니다.",
       "sub": "서울의 AI 오픈소스 해커하우스.<br>재밌는 걸 만들어 공개합니다.",
       "channels": "채널",
+      "featured": ["k-skill", "slides-grab", "CozyClay"],
+      "starsLabel": "GitHub 별",
       "langNavLabel": "언어 선택",
       "themeLabel": "밝은 테마와 어두운 테마 전환",
       "privacyLabel": "방문 분석 안내",
       "privacyTitle": "방문 분석 안내",
       "privacyDescription": "link.nomadamas.org가 쓰는 방문 분석 도구와 브라우저에 남기는 값을 안내합니다.",
-      "privacyUpdated": "2026년 10월 13일 갱신",
+      "privacyUpdated": "2026년 10월 21일 갱신",
       "fontStack": "\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,\"Apple SD Gothic Neo\",system-ui,sans-serif"
     },
     "en": {
@@ -39,12 +55,14 @@
       "ogDescription": "An AI open-source hacker house in Seoul. We make things in the open, and ship them to the world.",
       "sub": "An AI open-source hacker house in Seoul.<br>We make things in the open, and ship them to the world.",
       "channels": "Channels",
+      "featured": ["slides-grab", "CozyClay", "k-skill"],
+      "starsLabel": "GitHub stars",
       "langNavLabel": "Language",
       "themeLabel": "Switch between light and dark theme",
       "privacyLabel": "Privacy",
       "privacyTitle": "Privacy and analytics",
       "privacyDescription": "What link.nomadamas.org measures with Google Analytics and Microsoft Clarity, and what it keeps in your browser.",
-      "privacyUpdated": "Updated October 13, 2026",
+      "privacyUpdated": "Updated October 21, 2026",
       "fontStack": "\"Pretendard Variable\",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif"
     },
     "cn": {
@@ -56,12 +74,14 @@
       "ogDescription": "位于首尔的 AI 开源黑客之家。我们做好玩的东西，并公开发布。",
       "sub": "位于首尔的 AI 开源黑客之家。<br>我们做好玩的东西，并公开发布。",
       "channels": "频道",
+      "featured": ["slides-grab", "CozyClay", "k-skill"],
+      "starsLabel": "GitHub 星标",
       "langNavLabel": "语言",
       "themeLabel": "切换浅色与深色主题",
       "privacyLabel": "隐私说明",
       "privacyTitle": "隐私与访问统计说明",
       "privacyDescription": "说明 link.nomadamas.org 使用的访问统计工具，以及在浏览器中保存的内容。",
-      "privacyUpdated": "更新于 2026 年 10 月 13 日",
+      "privacyUpdated": "更新于 2026 年 10 月 21 日",
       "fontStack": "\"PingFang SC\",\"Hiragino Sans GB\",\"Noto Sans SC\",\"Microsoft YaHei\",\"Pretendard Variable\",Pretendard,system-ui,sans-serif"
     },
     "jp": {
@@ -73,12 +93,14 @@
       "ogDescription": "ソウルにあるAIオープンソースのハッカーハウス。面白いものをつくって、公開しています。",
       "sub": "ソウルにあるAIオープンソースのハッカーハウス。<br>面白いものをつくって、公開しています。",
       "channels": "チャンネル",
+      "featured": ["slides-grab", "CozyClay", "k-skill"],
+      "starsLabel": "GitHub スター",
       "langNavLabel": "言語",
       "themeLabel": "ライトテーマとダークテーマを切り替える",
       "privacyLabel": "プライバシー",
       "privacyTitle": "プライバシーとアクセス解析",
       "privacyDescription": "link.nomadamas.org が使うアクセス解析ツールと、ブラウザに保存する内容について説明します。",
-      "privacyUpdated": "2026年10月13日 更新",
+      "privacyUpdated": "2026年10月21日 更新",
       "fontStack": "\"Hiragino Sans\",\"Hiragino Kaku Gothic ProN\",\"Noto Sans JP\",\"Yu Gothic UI\",Meiryo,\"Pretendard Variable\",Pretendard,system-ui,sans-serif"
     }
   }

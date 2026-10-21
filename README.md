@@ -35,6 +35,15 @@ https://link.nomadamas.org
 - 같은 주소가 `<head>`의 JSON-LD `sameAs`에도 있으니 함께 고치면 됩니다.
 - `<a>`의 `id`는 GA에서 링크를 가르는 값이라, 기존 링크의 `id`는 바꾸지 않는 편이 좋습니다.
 
+### GitHub 칸
+
+- 페이지가 가장 보내고 싶은 곳이 GitHub라 첫 칸에 둡니다. 조직 링크(`id="github"`) 아래에 대표 저장소 줄을 붙인 묶음(`<div class="gh">`)입니다.
+- 저장소로 바로 보내는 이유는 두 가지입니다. 조직 페이지를 거치면 한 번 더 눌러야 합니다. 또 저장소 트래픽의 유입 사이트가 `link.nomadamas.org`가 아니라 `github.com`으로 남아, 이 페이지에서 온 방문을 GitHub 쪽에서 가를 수 없습니다.
+- 저장소 줄은 `src/page.html`이 아니라 `src/strings.json`에서 고칩니다. `repos`에 이름, 별 수, 언어별 한 줄 소개를 두고, 언어 페이지의 `featured`가 어떤 저장소를 어떤 순서로 보일지 정합니다. 한국어는 한국 사용자용인 k-skill을 먼저, 다른 언어는 slides-grab을 먼저 둡니다.
+- 한 줄 소개는 320px 폭에서 한 줄에 들어가게 씁니다. 일본어는 같은 글자 수여도 한국어보다 넓어 더 짧게 써야 합니다.
+- 별 수는 `repos.<이름>.stars` 값을 먼저 보여 주고, 페이지가 열리면 GitHub API(로그인 없이 IP당 시간당 60회)에서 지금 값으로 바꿉니다. 응답이 없으면 적어 둔 값이 남으니, 저장소를 더하거나 바꿀 때 `gh api repos/NomaDamas/<저장소> --jq .stargazers_count`로 그 자리에서 조회한 값을 넣습니다.
+- 저장소 줄의 `id`는 `gh-<저장소 이름 소문자>`입니다(`gh-k-skill`, `gh-slides-grab`, `gh-cozyclay`).
+
 ## 측정 (GA4)
 
 - 링크 페이지 전용 속성 `NomaDamas 링크`를 씁니다. 측정 ID는 `G-MFW4Z6SCDS`(`src/strings.json`의 `gaId`)이고, 블로그 속성(`G-DQ27HZKST3`)과 데이터가 섞이지 않습니다.
@@ -43,8 +52,9 @@ https://link.nomadamas.org
 - 태그는 `link.nomadamas.org`에서 열렸을 때만 불러옵니다. 임시 주소 `blog.nomadamas.org/link/`와 로컬 미리보기는 집계하지 않습니다.
 - 첫 화면 `/`에는 태그가 없습니다. 첫 화면이 원래 리퍼러를 `sessionStorage`의 `nd-ref`에 남기고, 옮겨 간 언어 페이지가 그 값을 `page_referrer`로 보냅니다. 그래서 유입 경로가 `link.nomadamas.org` 자신으로 덮이지 않습니다.
 - 데이터 보관 기간은 14개월입니다(기본값 2개월에서 바꿈).
-- 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, blog, threads, x, instagram-korea, instagram, youtube, youtube-global, linkedin, tiktok, facebook)와 `link_url`로 볼 수 있습니다. 계정을 이어서 세려고 `instagram`은 영어 `@nomadamas_global`(옛 `@n0madamas`), `youtube`는 한국어 `@nomadamas_korea`를 가리킵니다.
-- GitHub로 나간 클릭은 맞춤 이벤트 `github_click`(`event_name` 같음 `click`, `link_domain` 같음 `github.com`)으로 따로 세고 주요 이벤트로 표시해 두었습니다. 블로그 속성과 같은 정의입니다.
+- 링크 클릭은 향상된 측정의 이탈 클릭이 `click` 이벤트(`outbound` = true)로 남깁니다. 어느 링크인지는 `link_id`(github, gh-k-skill, gh-slides-grab, gh-cozyclay, blog, threads, x, instagram-korea, instagram, youtube, youtube-global, linkedin, tiktok, facebook)와 `link_url`로 볼 수 있습니다. 계정을 이어서 세려고 `instagram`은 영어 `@nomadamas_global`(옛 `@n0madamas`), `youtube`는 한국어 `@nomadamas_korea`를 가리킵니다.
+- GitHub로 나간 클릭은 맞춤 이벤트 `github_click`(`event_name` 같음 `click`, `link_domain` 같음 `github.com`)으로 따로 세고 주요 이벤트로 표시해 두었습니다. 블로그 속성과 같은 정의입니다. 조직 링크와 저장소 줄 클릭이 모두 여기에 들어갑니다.
+- 저장소 줄로 나간 방문은 GitHub 쪽에서도 `gh api repos/NomaDamas/<저장소>/traffic/popular/referrers`의 `link.nomadamas.org`로 볼 수 있습니다. 최근 14일, 상위 10개 사이트만 나오므로 방문이 적으면 목록에 오르지 않습니다.
 - 언어별로 보려면 페이지 경로 `/ko/`, `/en/`, `/cn/`, `/jp/`로 거르면 됩니다.
 
 ## 측정 (Clarity)

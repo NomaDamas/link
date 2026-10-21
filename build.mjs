@@ -46,6 +46,19 @@ const langLink = (l, from, current, tail = "") =>
 const queryOf = (utm) =>
 	Object.keys(utm).length ? `?${new URLSearchParams(utm).toString().replace(/&/g, "&amp;")}` : "";
 
+// GitHub 칸 아래 대표 저장소 줄. 순서는 언어마다 featured가 정한다. 별 수는 strings.json 값을 먼저 쓰고,
+// 페이지가 열리면 GitHub API에서 지금 값으로 바꾼다. 페이지 스크립트의 같은 표기 규칙과 맞춘다
+const STAR = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"/></svg>';
+const starText = (n) => (n >= 1000 ? `${(n / 1000).toFixed(1).replace(/\.0$/, "")}k` : String(n));
+const repoList = (l) =>
+	cfg.pages[l].featured
+		.map((name) => {
+			const r = cfg.repos[name];
+			if (!r) throw new Error(`${l}: featured의 ${name}이 repos에 없습니다`);
+			return `<li><a class="repo" id="gh-${name.toLowerCase()}" href="https://github.com/NomaDamas/${name}"><span class="t"><b>${name}</b><em>${r.desc[l]}</em></span><span class="star">${STAR}<span class="vh">${cfg.pages[l].starsLabel}</span><span data-stars="NomaDamas/${name}">${starText(r.stars)}</span></span></a></li>`;
+		})
+		.join("\n          ");
+
 const outputs = {};
 for (const l of langs) {
 	const p = cfg.pages[l];
@@ -63,6 +76,7 @@ for (const l of langs) {
 				.join("\n"),
 			langCode: l.toUpperCase(),
 			langNav: langs.map((x) => langLink(x, "../", x === l)).join("\n      "),
+			repoList: repoList(l),
 		},
 		`${l}/index.html`,
 	);
