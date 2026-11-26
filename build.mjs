@@ -79,7 +79,7 @@ for (const l of langs) {
 				.join("\n"),
 			langCode: l.toUpperCase(),
 			langNav: langs.map((x) => langLink(x, "../", x === l)).join("\n        "),
-			autoragDesc: autorag.desc[l],
+			autoragTagline: autorag.tagline,
 			autoragHref: `https://github.com/${autorag.repo}`,
 			autoragStars: starBadge(autorag, l),
 			repoList: repoList(l),

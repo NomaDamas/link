@@ -38,9 +38,9 @@ https://link.nomadamas.org
 
 ### AutoRAG와 GitHub 칸
 
-- 채널 목록 위에는 AutoRAG 카드를 둡니다. 첫 링크(`id="gh-autorag"`)는 `Marker-Inc-Korea/AutoRAG` 저장소를 열고, 스타는 방문자가 GitHub에서 직접 누릅니다. 보조 링크(`id="dazzi"`)는 AutoRAG를 써 볼 수 있는 Dazzi 사이트를 엽니다.
+- 채널 목록 위에는 AutoRAG 카드를 둡니다. 제목 바로 아래 모든 언어에서 같은 영어 원라이너를 보여 줍니다. 첫 링크(`id="gh-autorag"`)는 `Marker-Inc-Korea/AutoRAG` 저장소를 엽니다. 보조 링크(`id="dazzi"`)는 AutoRAG를 써 볼 수 있는 Dazzi 사이트를 엽니다.
 - 저장소로 바로 보내면 조직 페이지를 거치지 않습니다. GitHub 쪽에서 유입 사이트를 볼 수 있는 저장소라면 조직 페이지를 거쳐 `github.com`으로 덮이지 않고 `link.nomadamas.org`에서 온 방문을 구분할 수 있습니다.
-- `src/strings.json`의 `repos`에 보이는 이름, 저장소 경로(`repo`, 조직이 달라도 됩니다), 별 수, 언어별 한 줄 소개를 둡니다. 언어 페이지의 `autoragStarLabel`, `dazziLabel`은 AutoRAG 카드의 링크 문구입니다.
+- `src/strings.json`의 `repos`에 보이는 이름, 저장소 경로(`repo`, 조직이 달라도 됩니다), 별 수, 언어별 한 줄 소개를 둡니다. `repos.AutoRAG.tagline`은 공통 원라이너이며, 언어 페이지의 `autoragGitHubLabel`, `dazziLabel`은 AutoRAG 카드의 링크 문구입니다.
 - 채널 목록 첫 칸은 GitHub 조직 링크(`id="github"`)와 대표 저장소 줄을 묶습니다. 언어 페이지의 `featured`가 저장소 순서를 정합니다. 한국어 페이지는 k-skill, CozyClay 순이고, 다른 언어는 역순입니다.
 - 한 줄 소개는 320px 폭에서 한 줄에 들어가게 씁니다. 일본어는 같은 글자 수여도 한국어보다 넓어 더 짧게 써야 합니다.
 - 별 수는 `repos.<이름>.stars` 값을 먼저 보여 주고, 페이지가 열리면 GitHub API(로그인 없이 IP당 시간당 60회)에서 지금 값으로 바꿉니다. 응답이 없으면 적어 둔 값이 남으니, 저장소를 더하거나 바꿀 때 `gh api repos/<소유자>/<저장소> --jq .stargazers_count`로 그 자리에서 조회한 값을 넣습니다.
