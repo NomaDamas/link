@@ -81,6 +81,22 @@ test("상대 링크가 모두 실제 파일을 가리킨다", () => {
 	}
 });
 
+test("모든 언어에서 AutoRAG 저장소 링크 하나를 Dazzi와 채널보다 먼저 보여 준다", () => {
+	for (const l of langs) {
+		const html = read(`${l}/index.html`);
+		const main = html.match(/<main>([\s\S]*?)<\/main>/)?.[1] ?? "";
+		const links = [...main.matchAll(/<a\b[^>]*\bid="([^"]+)"[^>]*\bhref="([^"]+)"/g)];
+		assert.deepEqual(links.slice(0, 3).map(([, id, href]) => [id, href]), [
+			["gh-autorag", "https://github.com/Marker-Inc-Korea/AutoRAG"],
+			["dazzi", "https://dazziapp.com/"],
+			["github", "https://github.com/NomaDamas"],
+		], l);
+		assert.equal([...html.matchAll(/\bid="gh-autorag"/g)].length, 1, l);
+		assert.ok(main.includes(cfg.pages[l].autoragStarLabel), l);
+		assert.ok(main.includes('data-stars="Marker-Inc-Korea/AutoRAG"'), l);
+	}
+});
+
 test("채널 주소는 폴더 이름을 utm_source로 붙인다", () => {
 	for (const c of channels) assert.ok(read(`${c}/index.html`).includes(`"utm_source":"${c}"`), c);
 });
