@@ -92,7 +92,8 @@ test("모든 언어에서 AutoRAG 저장소 링크 하나를 Dazzi와 채널보�
 			["github", "https://github.com/NomaDamas"],
 		], l);
 		assert.equal([...html.matchAll(/\bid="gh-autorag"/g)].length, 1, l);
-		assert.ok(main.includes(cfg.pages[l].autoragStarLabel), l);
+		assert.ok(main.includes('<p lang="en">Stop organizing. Ask your files.</p>'), l);
+		assert.ok(main.includes(`<span>${cfg.pages[l].autoragGitHubLabel}</span>`), l);
 		assert.ok(main.includes('data-stars="Marker-Inc-Korea/AutoRAG"'), l);
 	}
 });

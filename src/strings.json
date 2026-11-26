@@ -16,12 +16,7 @@
     "AutoRAG": {
       "repo": "Marker-Inc-Korea/AutoRAG",
       "stars": 6191,
-      "desc": {
-        "ko": "파일, 채팅, 메일에서 답을 찾고 출처까지 확인하세요.",
-        "en": "Ask your files, chats, and email. Get answers with sources you can open.",
-        "cn": "搜索文件、聊天和邮件，获取可查看来源的答案。",
-        "jp": "ファイル、チャット、メールを検索し、出典を確認できる回答を得られます。"
-      }
+      "tagline": "Stop organizing. Ask your files."
     },
     "k-skill": {
       "repo": "NomaDamas/k-skill",
@@ -44,7 +39,7 @@
       "ogDescription": "서울의 AI 오픈소스 해커하우스. 재밌는 걸 만들어 공개합니다.",
       "sub": "서울의 AI 오픈소스 해커하우스.<br>재밌는 걸 만들어 공개합니다.",
       "channels": "채널",
-      "autoragStarLabel": "GitHub에서 AutoRAG 스타 주기",
+      "autoragGitHubLabel": "GitHub에서 보기",
       "dazziLabel": "Dazzi에서 AutoRAG 써 보기",
       "featured": ["k-skill", "CozyClay"],
       "starsLabel": "GitHub 별",
@@ -65,7 +60,7 @@
       "ogDescription": "An AI open-source hacker house in Seoul. We make things in the open, and ship them to the world.",
       "sub": "An AI open-source hacker house in Seoul.<br>We make things in the open, and ship them to the world.",
       "channels": "Channels",
-      "autoragStarLabel": "Star AutoRAG on GitHub",
+      "autoragGitHubLabel": "View on GitHub",
       "dazziLabel": "Try AutoRAG in Dazzi",
       "featured": ["CozyClay", "k-skill"],
       "starsLabel": "GitHub stars",
@@ -86,7 +81,7 @@
       "ogDescription": "位于首尔的 AI 开源黑客之家。我们做好玩的东西，并公开发布。",
       "sub": "位于首尔的 AI 开源黑客之家。<br>我们做好玩的东西，并公开发布。",
       "channels": "频道",
-      "autoragStarLabel": "在 GitHub 上为 AutoRAG 加星",
+      "autoragGitHubLabel": "查看 GitHub 仓库",
       "dazziLabel": "在 Dazzi 中体验 AutoRAG",
       "featured": ["CozyClay", "k-skill"],
       "starsLabel": "GitHub 星标",
@@ -107,7 +102,7 @@
       "ogDescription": "ソウルにあるAIオープンソースのハッカーハウス。面白いものをつくって、公開しています。",
       "sub": "ソウルにあるAIオープンソースのハッカーハウス。<br>面白いものをつくって、公開しています。",
       "channels": "チャンネル",
-      "autoragStarLabel": "GitHub で AutoRAG にスターを付ける",
+      "autoragGitHubLabel": "GitHub で見る",
       "dazziLabel": "Dazzi で AutoRAG を試す",
       "featured": ["CozyClay", "k-skill"],
       "starsLabel": "GitHub スター",
